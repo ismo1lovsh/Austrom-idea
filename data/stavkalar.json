@@ -1,0 +1,39 @@
+{
+ "yangilangan": "2026-11-21",
+ "bhm": 440000,
+ "bhm_sana": "2026-09-01",
+ "mhtekm": 1360000,
+ "sud": {
+  "mulkiy_foiz": 4,
+  "mulkiy_min_bhm": 1,
+  "ajrim_bhm": 2,
+  "ajrim_takror_bhm": 4,
+  "apellyatsiya_foiz": 50,
+  "tayyorlov_kun": 10,
+  "korish_kun": 30,
+  "korish_max_kun": 60,
+  "tez_korish_kun": 20
+ },
+ "mediatsiya": {"kun": 30, "uzaytirish_kun": 30},
+ "notarius": {
+  "meros_kochmas_bhm": 0.5,
+  "meros_boshqa_bhm": 0.3,
+  "kochmas_markaz_bhm": 1,
+  "kochmas_boshqa_bhm": 0.5,
+  "qarindosh_chegirma_foiz": 50,
+  "ishonchnoma_avto_qarindosh_bhm": 0.5,
+  "ishonchnoma_avto_boshqa_bhm": 2,
+  "ishonchnoma_kochmas_qarindosh_bhm": 0.25,
+  "ishonchnoma_kochmas_boshqa_bhm": 0.5
+ },
+ "aliment": {"ulush": {"1": 0.25, "2": 0.3333333333, "3": 0.5}, "min_foiz_mhtekm": 26.5},
+ "manbalar": {
+  "bhm": {"nomi": "Prezidentning 23.06.2026 yildagi PF-115-son Farmoni: BHM 2026-yil 1-sentabrdan 440 000 söm, MHTEKM 1 360 000 söm", "url": "https://lex.uz"},
+  "boj": {"nomi": "«Davlat boji töğrisida»gi Qonun (OʻRQ-600, 06.01.2020), ilova: 1-band «a», «v», «g», «z»; 4-band «a», «m», «p», «r»", "url": "https://lex.uz/docs/-4680944"},
+  "boj_ozod": {"nomi": "«Davlat boji töğrisida»gi Qonun, 8-modda: aliment va ish haqi undiriş da'volari böyiça da'vogarlar davlat bojidan ozod", "url": "https://lex.uz/docs/-4680944"},
+  "boj_qaytarish": {"nomi": "«Davlat boji töğrisida»gi Qonun, 18-modda, 9-band: mediativ kelişuv tuzilib, ariza körmasdan qoldirilsa, boj qaytariladi", "url": "https://lex.uz/docs/-4680944"},
+  "fpk": {"nomi": "Fuqarolik protsessual kodeksi, 202-modda (tayyorlov — 10 kun) va 207-modda (körish — 1 oy, murakkab iş 2 oy; aliment va mehnat işlari — 20 kun)", "url": "https://lex.uz/docs/-3517337"},
+  "mediatsiya": {"nomi": "«Mediatsiya töğrisida»gi Qonun (OʻRQ-482, 03.07.2018), 23-modda: mediatsiya 30 kun içida, taraflar roziligi bilan yana 30 kungaça", "url": "https://lex.uz/docs/-3805227"},
+  "aliment": {"nomi": "Oila kodeksi, 99-modda: 1 bola — 1/4, 2 bola — 1/3, 3 va undan ortiq — 1/2; har bir bolaga kamida MHTEKMning 26,5 foizi", "url": "https://lex.uz/docs/-104720"}
+ }
+}

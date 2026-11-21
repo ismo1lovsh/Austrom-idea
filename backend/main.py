@@ -475,6 +475,13 @@ def video(body: ArtIn, u=Depends(user)):
     return ai(vid, arts[:1])
 
 
+# ---------------- Hisoblab ber (davlat boji, muddatlar, aliment) ----------------
+@app.get("/api/stavkalar")
+def stavkalar(u=Depends(user)):
+    """Hisoblagiçlar uçun tekşirilgan stavkalar (data/stavkalar.json, manbalari bilan)."""
+    return load("stavkalar.json", {})
+
+
 # ---------------- 3. Huquq va majburiyatlarim ----------------
 @app.get("/api/rights")
 def rights(u=Depends(user)):

@@ -110,6 +110,41 @@
     "Fayl tanlash": "Выбрать файл", "Rasmga olish": "Сфотографировать", "Hujjat tahlil qilinmoqda…": "Документ анализируется…", "Hujjat turi": "Тип документа",
     "Asosiy ma'lumotlar": "Основные данные", "Muammolar va xatolar": "Проблемы и ошибки", "Nima qiliş kerak": "Что делать", "Muddat": "Срок",
     "Faylga savol bering…": "Задайте вопрос по файлу…", "Fayl juda katta (10 MB gaça)": "Файл слишком большой (до 10 МБ)", "Faqat rasm (JPG, PNG) yoki PDF": "Только фото (JPG, PNG) или PDF",
+
+    "Hisoblab ber": "Посчитать", "Davlat boji, sud muddati, aliment": "Госпошлина, сроки суда, алименты", "Donişmand bobo hisoblab beradi": "Донишманд-бобо посчитает",
+    "Davlat boji, sud va mediatsiya muddatlari hamda alimentni amaldagi qonunçilik böyiça hisoblaydi.": "Рассчитывает госпошлину, сроки суда и медиации, а также алименты по действующему законодательству.",
+    "Sudmi yoki kelişuvmi?": "Суд или соглашение?", "Sud va mediatsiya yölini pul va vaqt böyiça solişturiş": "Сравнение суда и медиации по деньгам и времени",
+    "Notariusga tayyorgarlik": "Подготовка к нотариусу", "Davlat boji va olib boriladigan hujjatlar": "Госпошлина и документы, которые нужно взять",
+    "Aliment hisoblagiçi": "Калькулятор алиментов", "Oylik aliment miqdori va eng kam summa": "Ежемесячные алименты и минимальная сумма",
+    "Natija ma'lumot uçun. Aniq summani tegişli idora yoki notarius tasdiqlaydi.": "Результат носит справочный характер. Точную сумму подтвердит орган или нотариус.",
+    "Hisoblagiç topilmadi": "Калькулятор не найден", "Donişmand tuşuntirsin": "Пусть Донишманд объяснит",
+    "Nizo turini tanlang — sud va kelişuv (mediatsiya) yölini pul va vaqt böyiça solişturamiz.": "Выберите тип спора — сравним суд и соглашение (медиацию) по деньгам и времени.",
+    "Pul yoki mol-mulk": "Деньги или имущество", "Nikohdan ajraliş": "Развод", "Aliment": "Алименты", "Ish haqi": "Зарплата",
+    "Nizo summasi (söm)": "Сумма спора (сум)", "Masalan: 20 000 000": "Например: 20 000 000", "Takroriy ajraliş": "Повторный развод",
+    "Mediator haqi, agar kelişilgan bölsa (söm)": "Оплата медиатора, если согласована (сум)", "Kelişuvga köra": "По договорённости",
+    "Nizo summasini kiriting": "Введите сумму спора", "Sud yöli": "Через суд", "Kelişuv yöli": "Через соглашение", "Muddat": "Срок",
+    "Da'vogar davlat bojidan ozod": "Истец освобождён от госпошлины", "Mediator haqi": "Оплата медиатора",
+    "Davlat boji yöq · mediator haqi kelişuvga köra": "Госпошлины нет · оплата медиатора по договорённости",
+    "Donişmand maslahati": "Совет Донишманда", "Bilib qöying": "Полезно знать",
+    "Sud jarayonida mediativ kelişuv tuzilib, ariza körmasdan qoldirilsa, tölangan davlat boji qaytariladi.": "Если в ходе суда заключено медиативное соглашение и иск оставлен без рассмотрения, уплаченная госпошлина возвращается.",
+    "Bu nizo uçun davlat boji tölanmaydi va sud uni tezroq köradi. Kelişuv yöli ham ixtiyoriy.": "По такому спору госпошлина не платится, и суд рассматривает его быстрее. Соглашение — тоже возможный путь.",
+    "Kelişuv yöli ham, sud yöli ham mumkin. Munosabatni saqlaş muhim bölsa, mediatsiyani tanlang.": "Возможны и соглашение, и суд. Если важно сохранить отношения, выберите медиацию.",
+    "Mediatsiyaga murojaat": "Обратиться к медиатору", "Da'vo arizasi": "Исковое заявление",
+    "Qaysi notarial harakat kerak? Davlat bojini hisoblab, olib boriladigan hujjatlarni körsatamiz.": "Какое нотариальное действие нужно? Посчитаем госпошлину и покажем, какие документы взять.",
+    "Meros guvohnomasi": "Свидетельство о наследстве", "Uy-joy oldi-sotdisi": "Купля-продажа жилья", "Avtomobilga işonçnoma": "Доверенность на авто",
+    "Uy-joyga işonçnoma": "Доверенность на жильё", "Uy-joy, yer, avtomobil soni": "Количество домов, участков, автомобилей",
+    "Boşqa mol-mulk ham bor (omonat, pul, buyumlar)": "Есть и другое имущество (вклады, деньги, вещи)", "Toşkent, Nukus yoki viloyat markazi": "Ташкент, Нукус или областной центр",
+    "Boşqa şahar yoki tuman": "Другой город или район", "Davlat boji": "Госпошлина", "Olib boriladigan hujjatlar": "Документы, которые нужно взять",
+    "Taxminiy röyxat — notarius aniqlaştiradi. Bu faqat davlat boji: boşqa xarajatlarni notariusdan söraş kerak.": "Примерный список — нотариус уточнит. Это только госпошлина: о других расходах спросите у нотариуса.",
+    "Merosxörning pasporti": "Паспорт наследника", "Vafot etganlik töğrisidagi guvohnoma": "Свидетельство о смерти",
+    "Qarindoşlikni tasdiqlovçi hujjat (tuğilganlik yoki nikoh guvohnomasi)": "Документ о родстве (свидетельство о рождении или браке)",
+    "Mol-mulkka egalik hujjatlari (kadastr ma'lumoti, texnik pasport)": "Документы на имущество (кадастровые данные, техпаспорт)", "Ikki tomonning pasportlari": "Паспорта обеих сторон",
+    "Mulkka egalik hujjati (kadastr ma'lumoti)": "Документ о праве собственности (кадастровые данные)", "Er yoki xotinning roziligi (mulk umumiy bölsa)": "Согласие супруга (если имущество общее)",
+    "Egasining pasporti": "Паспорт владельца", "Avtomobilning texnik pasporti": "Техпаспорт автомобиля", "Işonçli şaxsning pasport ma'lumotlari": "Паспортные данные доверенного лица",
+    "Ota yoki onaning oylik daromadi va bolalar soni böyiça alimentni hisoblaymiz.": "Рассчитаем алименты по ежемесячному доходу родителя и количеству детей.",
+    "Aliment tölovçining oylik daromadi (söm)": "Ежемесячный доход плательщика (сум)", "Masalan: 6 000 000": "Например: 6 000 000",
+    "Voyaga yetmagan bolalar soni": "Количество несовершеннолетних детей", "Daromadni kiriting": "Введите доход", "Oylik aliment": "Алименты в месяц",
+    "Daromad ulushi eng kam miqdordan past — eng kam miqdor olinadi.": "Доля от дохода ниже минимума — берётся минимальная сумма.", "Aliment arizasini tayyorlaş": "Подготовить заявление на алименты",
     "Şikoyat tayyorlaş": "Подготовить жалобу", "Hujjatni AI tekşirsin": "Пусть ИИ проверит документ", "Rasm, PDF — jarima, qaror, şartnoma": "Фото, PDF — штраф, решение, договор",
   };
   const CODE_RU = { JK: "УК", MJTK: "КоАО", JPK: "УПК", MK: "ТК", FPK: "ГПК", FK: "ГК", KONST: "Конституция", PF58: "УП-58", VMQ244: "ПКМ №244" };
@@ -123,14 +158,22 @@
     [/^Matnda körsat( \d+)?$/, (m, n) => "Показать в тексте" + (n || "")], [/(\d{4}) y\.$/, "$1 г."], [/^JŞŞIR: /, "ПИНФЛ: "],
     [/Ertaga 00:00 da — (\d+) soat (\d+) daqiqa dan keyin/, "Завтра в 00:00 — через $1 ч $2 мин"], [/Tarif amal qiladi: (.*) gaça/, "Тариф действует до: $1"],
     [/^Oyiga (.*)$/, "$1 в месяц"], [/^\/ oy$/, "/ мес."], [/^\/ yil$/, "/ год"], [/^(.*) tarifi faollaşdi$/, "Тариф «$1» активирован"], [/ söm\b/g, " сум"],
-    [/^Ovozli javob: /, "Голосовой ответ: "], [/^Xato (\d+)$/, "Ошибка $1"], [/^(.*) faylini joylang$/, "Поместите файл $1"], [/^Limit: (\d+) qoldi$/, "Лимит: осталось $1"],
+    [/^Ovozli javob: /, "Голосовой ответ: "],
+    [/^Summaning (\d+)%, lekin kamida (\d+) BHM$/, "$1% от суммы, но не менее $2 БРВ"], [/^(\d[\d.,]*) BHM$/, "$1 БРВ"], [/^1 BHM = /, "1 БРВ = "], [/^(.*) dan$/, "с $1"],
+    [/^Tayyorlov (\d+) kun \+ körish (.*)\. Apellyatsiya uçun qöşimça boj tölanadi\.$/, (m, a, b) => `Подготовка ${a} дн. + рассмотрение ${b.replace("kun", "дн.").replace("1–2 oy", "1–2 мес.")}. За апелляцию платится отдельная пошлина.`],
+    [/^~(\d+)(–\d+)? kun$/, "~$1$2 дн."], [/^Taraflar roziligi bilan yana (\d+) kungaça\.$/, "По согласию сторон — ещё до $1 дн."],
+    [/^Avval kelişuvni sinab köring: (.*) tejaysiz va nizo taxminan (\d+) kunda hal böladi\. Kelişuv bölmasa ham sudga boriş huquqingiz saqlanadi\.$/, "Сначала попробуйте договориться: сэкономите $1, и спор решится примерно за $2 дн. Если не получится, право обратиться в суд сохраняется."],
+    [/^Har bir uy-joy, yer yoki avtomobil — (.*?)(, boşqa mol-mulk — (.*))?$/, (m, a, b, c) => `За каждый дом, участок или авто — ${a}${c ? `, другое имущество — ${c}` : ""}`],
+    [/, qarindoşga — (\d+)%/, ", родственнику — $1%"], [/^Yaqin qarindoşga \((.*)\)$/, "Близкому родственнику (супруг(а), родители, дети, внуки, братья, сёстры)"],
+    [/^Daromadning (\S+) qismi$/, "$1 дохода"], [/^Eng kam miqdor \((\d+) bola × (.*)\)$/, "Минимум ($1 реб. × $2)"],
+    [/^Sud taraflarning ahvoliga qarab miqdorni kamaytirişi yoki köpaytirişi mumkin\. Aliment da'vosi uçun davlat boji tölanmaydi, sud işni tayyorlangandan keyin (\d+) kun içida köradi\.$/, "Суд может уменьшить или увеличить сумму с учётом положения сторон. Госпошлина за иск об алиментах не платится, суд рассматривает дело в течение $1 дней после подготовки."], [/^Xato (\d+)$/, "Ошибка $1"], [/^(.*) faylini joylang$/, "Поместите файл $1"], [/^Limit: (\d+) qoldi$/, "Лимит: осталось $1"],
   ];
   function ru(s) {
     const t = s.trim(); if (!t) return s;
     if (RU[t] != null) return s.replace(t, RU[t]);
-    let r = s;
+    let r = t;
     for (const [rx, rep] of RU_RX) r = r.replace(rx, rep);
-    return r;
+    return r === t ? s : s.replace(t, r);
   }
   /** Bitta matnni joriy tilga ögiradi (kodda işlatiş uçun). */
   function L(s) { return LANG === "ru" ? ru(s) : LANG === "uzc" ? cyr(s) : s; }

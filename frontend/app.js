@@ -30,7 +30,7 @@ const P = {
   logout: "M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10", card: "M3 6h18v12H3zM3 10h18", star: "M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z",
   sound: "M4 9h4l5-4v14l-5-4H4zM17 9a4 4 0 0 1 0 6", mute: "M4 9h4l5-4v14l-5-4H4zM17 9l4 6M21 9l-4 6",
   video: "M3 6h13v12H3zM16 10l5-3v10l-5-3", spark: "M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6",
-  kodeks: "M5 3h11l3 3v15H5zM9 8h6M9 12h6M9 16h4", scan: "M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 9h8M8 12h8M8 15h5", camera: "M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z", globe: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z", qaror: "M6 3h12v18l-6-4-6 4z", konst: "M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z",
+  kodeks: "M5 3h11l3 3v15H5zM9 8h6M9 12h6M9 16h4", calc: "M6 3h12v18H6zM9 7h6M9 12h.01M12 12h.01M15 12h.01M9 15h.01M12 15h.01M15 15h.01M9 18h.01M12 18h3", aliment: "M7 21v-5l-3-3 3-6h3l2 3 2-3h3l3 6-3 3v5M12 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", scan: "M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 9h8M8 12h8M8 15h5", camera: "M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z", globe: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z", qaror: "M6 3h12v18l-6-4-6 4z", konst: "M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z",
 };
 const MARK = (s = 34, bg = "#0F5F66") => `<svg width="${s}" height="${s}" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="${bg}"/><path d="M38 30V90" stroke="#fff" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M38 30H57C77 30 90 43 90 60C90 77 77 90 57 90H38" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><g stroke="#9FD3D6" stroke-width="5" stroke-linecap="round"><path d="M51 51H70"/><path d="M51 61H75"/><path d="M51 71H65"/></g><path d="M93 13L96.5 23.5L107 27L96.5 30.5L93 41L89.5 30.5L79 27L89.5 23.5Z" fill="#F2B134"/></svg>`;
 const CHOL_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="cholsvg" aria-hidden="true"> <defs> <radialGradient id="gBg" cx="40%" cy="30%" r="80%"><stop offset="0" stop-color="#23949C"/><stop offset=".55" stop-color="#0F5F66"/><stop offset="1" stop-color="#07363B"/></radialGradient> <radialGradient id="gSkin" cx="42%" cy="38%" r="70%"><stop offset="0" stop-color="#FAD9B8"/><stop offset=".6" stop-color="#EDB98D"/><stop offset="1" stop-color="#C98559"/></radialGradient> <radialGradient id="gNose" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#F7CBA4"/><stop offset="1" stop-color="#D18E62"/></radialGradient> <linearGradient id="gBeard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#E9EDF0"/><stop offset="1" stop-color="#C5CDD3"/></linearGradient> <linearGradient id="gBeardSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset=".75" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient> <radialGradient id="gDoppi" cx="38%" cy="28%" r="80%"><stop offset="0" stop-color="#4A4A4A"/><stop offset=".45" stop-color="#1C1C1C"/><stop offset="1" stop-color="#050505"/></radialGradient> <linearGradient id="gChapan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0A2C55"/><stop offset=".5" stop-color="#174A86"/><stop offset="1" stop-color="#0A2C55"/></linearGradient> <linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient> <clipPath id="clip"><circle cx="256" cy="256" r="236"/></clipPath> <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#00262A" flood-opacity=".45"/></filter> </defs> <ellipse cx="256" cy="496" rx="170" ry="12" fill="#000" opacity=".18"/> <g id="badge"><circle cx="256" cy="256" r="244" fill="#F2B134"/><circle cx="256" cy="256" r="236" fill="url(#gBg)"/></g> <g clip-path="url(#clip)"> <g id="chapan" filter="url(#soft)"> <path d="M70 520C80 430 160 392 210 384L256 446L302 384C352 392 432 430 442 520Z" fill="url(#gChapan)"/> <g stroke-width="7" opacity=".9"> <path d="M120 520C126 462 150 430 178 412" stroke="#F2B134"/><path d="M150 520C156 470 176 440 200 424" stroke="#2BB3A3"/> <path d="M392 520C386 462 362 430 334 412" stroke="#F2B134"/><path d="M362 520C356 470 336 440 312 424" stroke="#2BB3A3"/> <path d="M96 520C102 470 124 440 150 420" stroke="#C0392B"/><path d="M416 520C410 470 388 440 362 420" stroke="#C0392B"/> </g> <path d="M70 520C80 430 160 392 210 384L256 446L302 384C352 392 432 430 442 520Z" fill="url(#gShade)"/> </g> <g id="face" filter="url(#soft)"> <ellipse cx="168" cy="262" rx="17" ry="27" fill="url(#gNose)"/><ellipse cx="344" cy="262" rx="17" ry="27" fill="url(#gNose)"/> <ellipse cx="256" cy="262" rx="88" ry="100" fill="url(#gSkin)"/> <ellipse cx="226" cy="222" rx="34" ry="20" fill="#fff" opacity=".18"/> <circle cx="204" cy="272" r="17" fill="#E8826F" opacity=".35"/><circle cx="308" cy="272" r="17" fill="#E8826F" opacity=".35"/> </g> <g id="brows" class="brows"> <path d="M198 214C210 196 236 194 248 210C232 206 214 210 202 222Z" fill="#FFFFFF" stroke="#C9D1D6" stroke-width="2"/> <path d="M314 214C302 196 276 194 264 210C280 206 298 210 310 222Z" fill="#FFFFFF" stroke="#C9D1D6" stroke-width="2"/> </g> <g id="eyes" fill="none" stroke="#3B2A20" stroke-width="5.5" stroke-linecap="round"> <path d="M207 238Q223 251 239 238"/><path d="M273 238Q289 251 305 238"/> <path d="M198 244l-7 4M314 244l7 4" stroke-width="3" opacity=".6"/> </g> <g id="beard" class="jaw" filter="url(#soft)"> <path d="M168 266C164 330 186 404 222 438C232 448 244 458 256 464C268 458 280 448 290 438C326 404 348 330 344 266C334 296 306 312 292 306C282 320 268 326 256 326C244 326 230 320 220 306C206 312 178 296 168 266Z" fill="url(#gBeard)"/> <path d="M168 266C164 330 186 404 222 438C232 448 244 458 256 464C268 458 280 448 290 438C326 404 348 330 344 266C334 296 306 312 292 306C282 320 268 326 256 326C244 326 230 320 220 306C206 312 178 296 168 266Z" fill="url(#gBeardSide)"/> <g fill="none" stroke="#B9C3CA" stroke-width="3" stroke-linecap="round" opacity=".8"> <path d="M200 330C204 370 218 400 236 424"/><path d="M228 344C230 378 238 406 248 430"/><path d="M256 340V440"/> <path d="M284 344C282 378 274 406 264 430"/><path d="M312 330C308 370 294 400 276 424"/> </g> </g> <g id="mouthG"><ellipse class="mouth" cx="256" cy="316" rx="20" ry="2" fill="#4A1C14"/><ellipse class="tongue" cx="256" cy="322" rx="11" ry="0" fill="#C2564A"/></g> <path d="M256 236C243 260 238 280 256 290C274 280 269 260 256 236Z" fill="url(#gNose)"/> <ellipse cx="250" cy="270" rx="5" ry="7" fill="#fff" opacity=".35"/> <g id="mustache" filter="url(#soft)"> <path d="M256 294C236 280 204 284 186 308C210 302 232 310 256 304C280 310 302 302 326 308C308 284 276 280 256 294Z" fill="url(#gBeard)"/> </g> <g id="doppi" filter="url(#soft)"> <path d="M160 200C158 136 200 100 256 100C312 100 354 136 352 200Z" fill="url(#gDoppi)"/> <path d="M156 188Q256 170 356 188L356 210Q256 192 156 210Z" fill="#111"/> <path d="M164 198l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity=".85"/> <g fill="#FFFFFF"> <path d="M256 112C274 126 276 152 256 170C238 152 240 126 256 112Z"/> <path d="M206 128C222 136 230 160 216 178C200 166 196 142 206 128Z" opacity=".95"/> <path d="M306 128C290 136 282 160 296 178C312 166 316 142 306 128Z" opacity=".95"/> </g> <g fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"> <path d="M256 112C262 104 270 104 272 110"/><path d="M206 128C204 118 210 112 216 116"/><path d="M306 128C308 118 302 112 296 116"/> </g> <ellipse cx="222" cy="120" rx="26" ry="12" fill="#fff" opacity=".12" transform="rotate(-25 222 120)"/> </g> </g> <path id="spark" d="M392 70L401 97L428 106L401 115L392 142L383 115L356 106L383 97Z" fill="#F2B134" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/> <ellipse cx="200" cy="96" rx="120" ry="40" fill="#FFFFFF" opacity=".07" transform="rotate(-20 200 96)"/> </svg>';
@@ -143,7 +143,7 @@ const R = [
   [/^login$/, login], [/^(home)?$/, home], [/^loyihalar$/, drafts], [/^loyiha\/(.+)$/, draft],
   [/^savod$/, savod], [/^qonunlar\/(\w+)$/, lawsList], [/^qonun\/([\w-]+)$/, law], [/^modda\/([\w-]+)\/([\w-]+)$/, article],
   [/^huquq$/, rights], [/^huquq\/(.+)$/, rightTopic], [/^ariza$/, organs], [/^idora\/(\w+)$/, organ], [/^yoz$/, writeApp],
-  [/^chat(?:\/(\d+))?$/, chat], [/^fayl$/, faylPage], [/^profil$/, profile], [/^tarif$/, tariffs], [/^arizalarim$/, myApps],
+  [/^chat(?:\/(\d+))?$/, chat], [/^fayl$/, faylPage], [/^hisob$/, hisobMenu], [/^hisob\/(\w+)$/, hisobTool], [/^profil$/, profile], [/^tarif$/, tariffs], [/^arizalarim$/, myApps],
 ];
 async function route() {
   stopVoice();
@@ -213,6 +213,7 @@ async function home() {
       <a class="tile t4" href="#ariza"><span class="ic">${icon("hujjat", 26)}</span><span><b>Ariza yuboriş</b><span>Qayerga va qanday</span></span><span class="deco">${icon("hujjat", 120, 1)}</span></a>
     </div>
     <a class="mini filecta" href="#fayl"><span class="ic">${icon("scan", 22)}</span><span style="flex:1"><b>Hujjatni AI tekşirsin</b><br><span class="note">Rasm, PDF — jarima, qaror, şartnoma</span></span>${icon("chev", 18)}</a>
+    <a class="mini calccta" href="#hisob"><span class="ic">${icon("calc", 22)}</span><span style="flex:1"><b>Hisoblab ber</b><br><span class="note">Davlat boji, sud muddati, aliment</span></span>${icon("chev", 18)}</a>
     <a class="mini" href="#profil"><span style="flex:1"><span class="row between" style="font-size:13px;margin-bottom:6px"><b>Bugungi limit</b><span class="note">${u.qoldi + u.qoshimcha} kredit qoldi</span></span>
       <span class="meter" style="display:block"><i style="width:${Math.round(100 * u.qoldi / u.kunlik_limit)}%"></i></span></span>${icon("chev", 18)}</a>
     <div class="stack"><h3>Tezkor savollar</h3><div class="chips" id="quick"></div></div>`);
@@ -663,8 +664,8 @@ function lipSync(audio, svg) {
   LIP = { raf: requestAnimationFrame(step) };
 }
 /** Javobni avtomatik ovoz chiqarib o'qiydi (ovozli savolga ovozli javob). */
-async function autoSpeak(text, el) {
-  if (!canTTS() || !S.autoVoice || !text) return;
+async function autoSpeak(text, el, force) {
+  if (!canTTS() || (!S.autoVoice && !force) || !text) return;
   stopVoice();
   const ind = document.createElement("div"); ind.className = "speaking";
   ind.innerHTML = `<span class="talker">${CHOL_SVG}</span><span class="sp"><b>Donişmand bobo</b><span class="st">Ovoz tayyorlanmoqda…</span><span class="wave"><i></i><i></i><i></i><i></i></span></span><button type="button" class="btn line" style="min-height:36px;padding:0 12px">Töxtatiş</button>`;
@@ -802,6 +803,151 @@ function faylPage() {
   };
   $("ff").onchange = () => pick($("ff")); $("fc").onchange = () => pick($("fc"));
   ask("Faylga savol bering…", (q) => run(q));
+}
+
+/* ---------------- Hisoblab ber (davlat boji, muddatlar, aliment) ---------------- */
+let ST = null;
+const stv = async () => (ST = ST || await api("stavkalar"));
+const num = (v) => Number(String(v || "").replace(/[^\d]/g, "")) || 0;
+const fmtIn = (el) => { const n = num(el.value); el.value = n ? n.toLocaleString("ru-RU").replace(/ /g, " ") : ""; };
+const bhm = (k) => Math.round(ST.bhm * k);
+const srcList = (keys) => `<div class="asos"><b>Asos:</b><ul>${keys.map((k) => ST.manbalar[k]).filter(Boolean).map((m) => `<li><a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.nomi)}</a></li>`).join("")}</ul></div>`;
+const TOOLS_H = [
+  ["sud", "tarozi", "Sudmi yoki kelişuvmi?", "Sud va mediatsiya yölini pul va vaqt böyiça solişturiş"],
+  ["notarius", "hujjat", "Notariusga tayyorgarlik", "Davlat boji va olib boriladigan hujjatlar"],
+  ["aliment", "aliment", "Aliment hisoblagiçi", "Oylik aliment miqdori va eng kam summa"],
+];
+async function hisobMenu() {
+  top({ title: "Hisoblab ber" });
+  await stv();
+  view(`<div class="info"><b>Donişmand bobo hisoblab beradi</b>Davlat boji, sud va mediatsiya muddatlari hamda alimentni amaldagi qonunçilik böyiça hisoblaydi.</div>
+    <div class="row" style="gap:6px"><span class="tag">1 BHM = ${som(ST.bhm)}</span><span class="note">${dfmt(ST.bhm_sana)} dan</span></div>
+    <div class="list">${TOOLS_H.map(([id, ic, t, d]) => `<a class="item" href="#hisob/${id}"><span class="ic">${icon(ic, 20)}</span><span><b>${t}</b><small>${d}</small></span><span class="chev">${icon("chev", 18)}</span></a>`).join("")}</div>
+    <p class="note">Natija ma'lumot uçun. Aniq summani tegişli idora yoki notarius tasdiqlaydi.</p>`);
+}
+async function hisobTool(id) {
+  await stv();
+  const t = TOOLS_H.find((x) => x[0] === id); if (!t) throw new Error("Hisoblagiç topilmadi");
+  top({ title: t[2], back: "#hisob" });
+  ({ sud: calcSud, notarius: calcNotarius, aliment: calcAliment })[id]();
+}
+function resultActions(sayText, acts) {
+  return `<div class="row">${acts.map(([a, label, cls]) => `<button class="btn ${cls || "ghost"}" data-h="${a}">${label}</button>`).join("")}
+    ${canTTS() ? `<button class="btn line" data-h="say">${icon("sound", 18)} Donişmand tuşuntirsin</button>` : ""}</div>`;
+}
+function bindResult(box, sayText, handlers) {
+  box.onclick = (e) => {
+    const b = e.target.closest("[data-h]"); if (!b) return;
+    if (b.dataset.h === "say") return autoSpeak(sayText(), box, true);
+    handlers[b.dataset.h]?.();
+  };
+}
+async function organTo(id, turi, holat) {
+  S.organs = S.organs || await api("organs");
+  const o = S.organs.find((x) => x.id === id) || {};
+  S.form = { idora: o.nomi || "", idoraId: o.id, turi: turi || "", holat: holat || "", mode: "ai" }; go("yoz");
+}
+function calcSud() {
+  const sd = ST.sud, md = ST.mediatsiya;
+  const v = view(`<p class="sub">Nizo turini tanlang — sud va kelişuv (mediatsiya) yölini pul va vaqt böyiça solişturamiz.</p>
+    <div class="seg wrap" id="nt"><button class="on" data-t="mulk">Pul yoki mol-mulk</button><button data-t="ajrim">Nikohdan ajraliş</button><button data-t="aliment">Aliment</button><button data-t="ishhaqi">Ish haqi</button></div>
+    <label class="f" id="sumF">Nizo summasi (söm)<input id="sum" inputmode="numeric" placeholder="Masalan: 20 000 000"></label>
+    <label class="check" id="takF" hidden><input type="checkbox" id="tak"> Takroriy ajraliş</label>
+    <label class="f">Mediator haqi, agar kelişilgan bölsa (söm)<input id="med" inputmode="numeric" placeholder="Kelişuvga köra"></label>
+    <div id="res" class="stack"></div>`);
+  let tur = "mulk";
+  const calc = () => {
+    $("sumF").hidden = tur !== "mulk"; $("takF").hidden = tur !== "ajrim";
+    const sum = num($("sum").value), med = num($("med").value);
+    let boj = 0, bojTxt = "";
+    if (tur === "mulk") { boj = Math.max(Math.round(sum * sd.mulkiy_foiz / 100), bhm(sd.mulkiy_min_bhm)); bojTxt = `Summaning ${sd.mulkiy_foiz}%, lekin kamida ${sd.mulkiy_min_bhm} BHM`; }
+    if (tur === "ajrim") { const k = $("tak").checked ? sd.ajrim_takror_bhm : sd.ajrim_bhm; boj = bhm(k); bojTxt = `${k} BHM`; }
+    if (tur === "aliment" || tur === "ishhaqi") { boj = 0; bojTxt = "Da'vogar davlat bojidan ozod"; }
+    const fast = tur === "aliment" || tur === "ishhaqi";
+    const d1 = sd.tayyorlov_kun + (fast ? sd.tez_korish_kun : sd.korish_kun), d2 = sd.tayyorlov_kun + (fast ? sd.tez_korish_kun : sd.korish_max_kun);
+    const save = boj - med, need = tur !== "mulk" || sum > 0;
+    $("res").innerHTML = !need ? `<div class="empty">Nizo summasini kiriting</div>` : `
+      <div class="cmp2">
+        <div class="card"><span class="tag">Sud yöli</span><div class="big">${som(boj)}</div><span class="note">Davlat boji · ${bojTxt}</span>
+          <div class="kv"><span>Muddat</span><b>${d1 === d2 ? `~${d1} kun` : `~${d1}–${d2} kun`}</b></div><span class="note">Tayyorlov ${sd.tayyorlov_kun} kun + körish ${fast ? `${sd.tez_korish_kun} kun` : "1–2 oy"}. Apellyatsiya uçun qöşimça boj tölanadi.</span></div>
+        <div class="card good"><span class="tag">Kelişuv yöli</span><div class="big">${som(med)}</div><span class="note">${med ? "Mediator haqi" : "Davlat boji yöq · mediator haqi kelişuvga köra"}</span>
+          <div class="kv"><span>Muddat</span><b>~${md.kun} kun</b></div><span class="note">Taraflar roziligi bilan yana ${md.uzaytirish_kun} kungaça.</span></div>
+      </div>
+      ${save > 0 ? `<div class="info med"><b>Donişmand maslahati</b>Avval kelişuvni sinab köring: ${som(save)} tejaysiz va nizo taxminan ${md.kun} kunda hal böladi. Kelişuv bölmasa ham sudga boriş huquqingiz saqlanadi.</div>`
+        : `<div class="info"><b>Donişmand maslahati</b>${fast ? "Bu nizo uçun davlat boji tölanmaydi va sud uni tezroq köradi. Kelişuv yöli ham ixtiyoriy." : "Kelişuv yöli ham, sud yöli ham mumkin. Munosabatni saqlaş muhim bölsa, mediatsiyani tanlang."}</div>`}
+      <div class="info"><b>Bilib qöying</b>Sud jarayonida mediativ kelişuv tuzilib, ariza körmasdan qoldirilsa, tölangan davlat boji qaytariladi.</div>
+      ${srcList(["boj", fast ? "boj_ozod" : "bhm", "boj_qaytarish", "fpk", "mediatsiya"])}
+      ${resultActions(null, [["med", "Mediatsiyaga murojaat", "acc"], ["sud", "Da'vo arizasi"]])}`;
+    bindResult($("res"), () => I.lang === "ru"
+      ? `Через суд: госпошлина ${boj.toLocaleString("ru-RU")} сум, срок примерно ${d1}–${d2} дней. Через медиацию: госпошлины нет, срок около ${md.kun} дней.`
+      : `Sud yöli: davlat boji ${boj.toLocaleString("ru-RU")} söm, muddat taxminan ${d1}–${d2} kun. Kelişuv yöli: davlat boji yöq, taxminan ${md.kun} kun.`,
+      { med: () => organTo("adliya", "Mediatsiyaga murojaat", tur === "mulk" ? `${som(sum)} miqdoridagi nizo böyiça mediatsiya orqali kelişmoqçiman.` : ""),
+        sud: () => organTo("sud", "Da'vo arizasi", tur === "aliment" ? "Aliment undiriş" : tur === "ajrim" ? "Nikohdan ajraliş" : tur === "ishhaqi" ? "Ish haqini undiriş" : `${som(sum)} undiriş`) });
+  };
+  $("nt").onclick = (e) => { const b = e.target.closest("[data-t]"); if (!b) return; tur = b.dataset.t; $("nt").querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b)); calc(); };
+  ["sum", "med"].forEach((id) => { $(id).oninput = () => { fmtIn($(id)); calc(); }; });
+  $("tak").onchange = calc; calc();
+}
+const NOT_HUJJAT = {
+  meros: ["Merosxörning pasporti", "Vafot etganlik töğrisidagi guvohnoma", "Qarindoşlikni tasdiqlovçi hujjat (tuğilganlik yoki nikoh guvohnomasi)", "Mol-mulkka egalik hujjatlari (kadastr ma'lumoti, texnik pasport)"],
+  sotuv: ["Ikki tomonning pasportlari", "Mulkka egalik hujjati (kadastr ma'lumoti)", "Er yoki xotinning roziligi (mulk umumiy bölsa)"],
+  avto: ["Egasining pasporti", "Avtomobilning texnik pasporti", "Işonçli şaxsning pasport ma'lumotlari"],
+  uy: ["Egasining pasporti", "Mulkka egalik hujjati (kadastr ma'lumoti)", "Işonçli şaxsning pasport ma'lumotlari"],
+};
+function calcNotarius() {
+  const n = ST.notarius;
+  const v = view(`<p class="sub">Qaysi notarial harakat kerak? Davlat bojini hisoblab, olib boriladigan hujjatlarni körsatamiz.</p>
+    <div class="seg wrap" id="na"><button class="on" data-t="meros">Meros guvohnomasi</button><button data-t="sotuv">Uy-joy oldi-sotdisi</button><button data-t="avto">Avtomobilga işonçnoma</button><button data-t="uy">Uy-joyga işonçnoma</button></div>
+    <div id="nf" class="stack"></div><div id="res" class="stack"></div>`);
+  let tur = "meros";
+  const form = () => {
+    $("nf").innerHTML = tur === "meros"
+      ? `<label class="f">Uy-joy, yer, avtomobil soni<input id="kn" type="number" min="0" max="20" value="1"></label><label class="check"><input type="checkbox" id="kb"> Boşqa mol-mulk ham bor (omonat, pul, buyumlar)</label>`
+      : tur === "sotuv" ? `<div class="seg wrap" id="jy"><button class="on" data-j="m">Toşkent, Nukus yoki viloyat markazi</button><button data-j="b">Boşqa şahar yoki tuman</button></div><label class="check"><input type="checkbox" id="qr"> Yaqin qarindoşga (er/xotin, ota-ona, bolalar, nevaralar, aka-uka, opa-singil)</label>`
+      : `<label class="check"><input type="checkbox" id="qr"> Yaqin qarindoşga (er/xotin, ota-ona, bolalar, nevaralar, aka-uka, opa-singil${tur === "avto" ? ", jiyanlar" : ""})</label>`;
+    $("nf").oninput = $("nf").onchange = calc;
+    $("jy")?.addEventListener("click", (e) => { const b = e.target.closest("[data-j]"); if (b) { $("jy").querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b)); calc(); } });
+    calc();
+  };
+  const calc = () => {
+    let boj = 0, izoh = "";
+    const qr = $("qr")?.checked;
+    if (tur === "meros") { const k = Math.max(0, Number($("kn").value) || 0), b = $("kb").checked; boj = k * bhm(n.meros_kochmas_bhm) + (b ? bhm(n.meros_boshqa_bhm) : 0); izoh = `Har bir uy-joy, yer yoki avtomobil — ${som(bhm(n.meros_kochmas_bhm))}${b ? `, boşqa mol-mulk — ${som(bhm(n.meros_boshqa_bhm))}` : ""}`; }
+    if (tur === "sotuv") { const m = $("jy").querySelector(".on").dataset.j === "m"; boj = bhm(m ? n.kochmas_markaz_bhm : n.kochmas_boshqa_bhm); if (qr) boj = Math.round(boj * n.qarindosh_chegirma_foiz / 100); izoh = `${m ? n.kochmas_markaz_bhm : n.kochmas_boshqa_bhm} BHM${qr ? `, qarindoşga — ${n.qarindosh_chegirma_foiz}%` : ""}`; }
+    if (tur === "avto") { const k = qr ? n.ishonchnoma_avto_qarindosh_bhm : n.ishonchnoma_avto_boshqa_bhm; boj = bhm(k); izoh = `${k} BHM`; }
+    if (tur === "uy") { const k = qr ? n.ishonchnoma_kochmas_qarindosh_bhm : n.ishonchnoma_kochmas_boshqa_bhm; boj = bhm(k); izoh = `${k} BHM`; }
+    $("res").innerHTML = `<div class="card"><span class="tag">Davlat boji</span><div class="big">${som(boj)}</div><span class="note">${izoh}</span></div>
+      <div class="card"><h3>Olib boriladigan hujjatlar</h3><ul class="checks">${NOT_HUJJAT[tur].map((x) => `<li>${esc(x)}</li>`).join("")}</ul><span class="note">Taxminiy röyxat — notarius aniqlaştiradi. Bu faqat davlat boji: boşqa xarajatlarni notariusdan söraş kerak.</span></div>
+      ${srcList(["boj", "bhm"])}${resultActions(null, [])}`;
+    bindResult($("res"), () => I.lang === "ru" ? `Госпошлина составит ${boj.toLocaleString("ru-RU")} сум. Возьмите с собой: ${NOT_HUJJAT[tur].map(L).join(", ")}.`
+      : `Davlat boji ${boj.toLocaleString("ru-RU")} söm böladi. Özingiz bilan olib boring: ${NOT_HUJJAT[tur].join(", ")}.`, {});
+  };
+  $("na").onclick = (e) => { const b = e.target.closest("[data-t]"); if (!b) return; tur = b.dataset.t; $("na").querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b)); form(); };
+  form();
+}
+function calcAliment() {
+  const a = ST.aliment, minOne = Math.round(ST.mhtekm * a.min_foiz_mhtekm / 100);
+  const v = view(`<p class="sub">Ota yoki onaning oylik daromadi va bolalar soni böyiça alimentni hisoblaymiz.</p>
+    <label class="f">Aliment tölovçining oylik daromadi (söm)<input id="inc" inputmode="numeric" placeholder="Masalan: 6 000 000"></label>
+    <label class="f">Voyaga yetmagan bolalar soni<input id="kids" type="number" min="1" max="12" value="1"></label>
+    <div id="res" class="stack"></div>`);
+  const calc = () => {
+    const inc = num($("inc").value), k = Math.max(1, Math.min(12, Number($("kids").value) || 1));
+    const sh = k >= 3 ? a.ulush["3"] : a.ulush[String(k)], frac = k >= 3 ? "1/2" : k === 2 ? "1/3" : "1/4";
+    const byShare = Math.round(inc * sh), minAll = minOne * k, pay = Math.max(byShare, minAll);
+    $("res").innerHTML = !inc ? `<div class="empty">Daromadni kiriting</div>` : `
+      <div class="card"><span class="tag">Oylik aliment</span><div class="big">${som(pay)}</div>
+        <div class="kv"><span>Daromadning ${frac} qismi</span><b>${som(byShare)}</b></div>
+        <div class="kv"><span>Eng kam miqdor (${k} bola × ${som(minOne)})</span><b>${som(minAll)}</b></div>
+        ${pay > byShare ? `<span class="note">Daromad ulushi eng kam miqdordan past — eng kam miqdor olinadi.</span>` : ""}</div>
+      <div class="info"><b>Bilib qöying</b>Sud taraflarning ahvoliga qarab miqdorni kamaytirişi yoki köpaytirişi mumkin. Aliment da'vosi uçun davlat boji tölanmaydi, sud işni tayyorlangandan keyin ${ST.sud.tez_korish_kun} kun içida köradi.</div>
+      ${srcList(["aliment", "bhm", "boj_ozod", "fpk"])}
+      ${resultActions(null, [["ariza", "Aliment arizasini tayyorlaş", "acc"]])}`;
+    bindResult($("res"), () => I.lang === "ru" ? `Алименты составят примерно ${pay.toLocaleString("ru-RU")} сум в месяц. Госпошлина за иск не платится.`
+      : `Aliment oyiga taxminan ${pay.toLocaleString("ru-RU")} söm böladi. Aliment da'vosi uçun davlat boji tölanmaydi.`,
+      { ariza: () => organTo("sud", "Da'vo arizasi", `Voyaga yetmagan ${k} nafar bolam uçun aliment undirişni söraymiz. Tölovçining oylik daromadi taxminan ${som(inc)}.`) });
+  };
+  $("inc").oninput = () => { fmtIn($("inc")); calc(); }; $("kids").oninput = calc; calc();
 }
 
 /* ---------------- Profil ---------------- */

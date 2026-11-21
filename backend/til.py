@@ -224,7 +224,21 @@ STATIC = {"Pro": "Pro", "Premium": "Premium", "Bepul": "Бесплатный", "
           "Pro dagi hamma imkoniyatlar": "Все возможности Pro", "Yangi qonunlar böyiça şaxsiy bildirişnoma": "Персональные уведомления о новых законах",
           "Ustuvor (tezkor) javob": "Приоритетный (быстрый) ответ", "Advokat bilan bog'lanish (demo)": "Связь с адвокатом (демо)", "Oila uçun 3 ta akkaunt": "3 аккаунта для семьи",
           "Bir harakat — tört xil jazo": "Одно действие — четыре разных наказания", "Olib qöyiş va tintuv": "Выемка и обыск",
-          "Çegaradan bojsiz olib kiriş normalari": "Нормы беспошлинного ввоза через границу"}
+          "Çegaradan bojsiz olib kiriş normalari": "Нормы беспошлинного ввоза через границу",
+          "Prezidentning 23.06.2026 yildagi PF-115-son Farmoni: BHM 2026-yil 1-sentabrdan 440 000 söm, MHTEKM 1 360 000 söm":
+              "Указ Президента № УП-115 от 23.06.2026: БРВ с 1 сентября 2026 года — 440 000 сум, МРОТ — 1 360 000 сум",
+          "«Davlat boji töğrisida»gi Qonun (OʻRQ-600, 06.01.2020), ilova: 1-band «a», «v», «g», «z»; 4-band «a», «m», «p», «r»":
+              "Закон «О государственной пошлине» (ЗРУ-600 от 06.01.2020), приложение: пункт 1 «а», «в», «г», «з»; пункт 4 «а», «м», «п», «р»",
+          "«Davlat boji töğrisida»gi Qonun, 8-modda: aliment va ish haqi undiriş da'volari böyiça da'vogarlar davlat bojidan ozod":
+              "Закон «О государственной пошлине», статья 8: истцы по искам о взыскании алиментов и заработной платы освобождаются от пошлины",
+          "«Davlat boji töğrisida»gi Qonun, 18-modda, 9-band: mediativ kelişuv tuzilib, ariza körmasdan qoldirilsa, boj qaytariladi":
+              "Закон «О государственной пошлине», статья 18, пункт 9: если заключено медиативное соглашение и заявление оставлено без рассмотрения, пошлина возвращается",
+          "Fuqarolik protsessual kodeksi, 202-modda (tayyorlov — 10 kun) va 207-modda (körish — 1 oy, murakkab iş 2 oy; aliment va mehnat işlari — 20 kun)":
+              "ГПК, статья 202 (подготовка — 10 дней) и статья 207 (рассмотрение — 1 месяц, сложные дела — 2 месяца; алиментные и трудовые дела — 20 дней)",
+          "«Mediatsiya töğrisida»gi Qonun (OʻRQ-482, 03.07.2018), 23-modda: mediatsiya 30 kun içida, taraflar roziligi bilan yana 30 kungaça":
+              "Закон «О медиации» (ЗРУ-482 от 03.07.2018), статья 23: медиация — в течение 30 дней, по согласию сторон ещё до 30 дней",
+          "Oila kodeksi, 99-modda: 1 bola — 1/4, 2 bola — 1/3, 3 va undan ortiq — 1/2; har bir bolaga kamida MHTEKMning 26,5 foizi":
+              "Семейный кодекс, статья 99: 1 ребёнок — 1/4, 2 ребёнка — 1/3, 3 и более — 1/2; на каждого ребёнка не менее 26,5% МРОТ"}
 
 _CODE = re.compile(r"^[A-Z]{1,6}(?:[-\s]?[\d.-]+)*$|^[A-Z]+-[\w-]+$")
 
