@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+data/app.db
+data/feedback.db
+data/_debug_*.html
+tools/test.wav
+*.log
+.idea/

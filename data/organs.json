@@ -1,0 +1,123 @@
+[
+ {
+  "id": "sud",
+  "nomi": "Sud tizimi",
+  "belgi": "sud",
+  "kanal": "my.sud.uz",
+  "url": "https://my.sud.uz",
+  "tavsif": "Da'vo, şikoyat va iltimosnomalar",
+  "arizalar": [
+   "Da'vo arizasi",
+   "Apellyatsiya şikoyati",
+   "Xususiy şikoyat",
+   "Kassatsiya şikoyati",
+   "Sud buyruği beriş haqida ariza",
+   "Iltimosnoma"
+  ]
+ },
+ {
+  "id": "iiv",
+  "nomi": "Içki işlar (IIV)",
+  "belgi": "politsiya",
+  "kanal": "Içki işlar organi yoki my.gov.uz",
+  "url": "https://my.gov.uz",
+  "tavsif": "Jinoyat va huquqbuzarlik haqida ariza",
+  "arizalar": [
+   "Jinoyat haqida ariza",
+   "Ma'muriy huquqbuzarlik haqida ariza",
+   "Bayonnoma ustidan şikoyat",
+   "Yöqolgan hujjat haqida ariza",
+   "Xodim harakati ustidan şikoyat"
+  ]
+ },
+ {
+  "id": "prokuratura",
+  "nomi": "Prokuratura",
+  "belgi": "tarozi",
+  "kanal": "Prokuratura organi yoki my.gov.uz",
+  "url": "https://my.gov.uz",
+  "tavsif": "Qonunbuzarlik va mansabdorlar ustidan şikoyat",
+  "arizalar": [
+   "Qonunbuzarlik haqida xabar",
+   "Mansabdor şaxs ustidan şikoyat",
+   "Tergov harakatlari ustidan şikoyat"
+  ]
+ },
+ {
+  "id": "hokimlik",
+  "nomi": "Hokimlik",
+  "belgi": "uy",
+  "kanal": "Hokimlik yoki pm.gov.uz",
+  "url": "https://pm.gov.uz",
+  "tavsif": "Kommunal, yer, qurilish masalalari",
+  "arizalar": [
+   "Murojaat (ariza)",
+   "Yer va qurilish masalasi böyiça ariza",
+   "Kommunal xizmat böyiça şikoyat",
+   "Ijtimoiy yordam söraş"
+  ]
+ },
+ {
+  "id": "mehnat",
+  "nomi": "Mehnat inspeksiyasi",
+  "belgi": "guruh",
+  "kanal": "Davlat mehnat inspeksiyasi yoki my.gov.uz",
+  "url": "https://my.gov.uz",
+  "tavsif": "Ish haqi, işdan böşatiş, mehnat şartnomasi",
+  "arizalar": [
+   "Ish haqi tölanmagani haqida şikoyat",
+   "Noqonuniy işdan böşatiş haqida şikoyat",
+   "Mehnat şartnomasi tuzilmagani haqida şikoyat"
+  ]
+ },
+ {
+  "id": "soliq",
+  "nomi": "Soliq organlari",
+  "belgi": "pul",
+  "kanal": "my.soliq.uz yoki soliq organi",
+  "url": "https://my.gov.uz",
+  "tavsif": "Soliq masalalari va e'tirozlar",
+  "arizalar": [
+   "Murojaat",
+   "Soliq tekşiruvi natijasiga e'tiroz",
+   "Ortiqça tölangan soliqni qaytariş haqida ariza"
+  ]
+ },
+ {
+  "id": "adliya",
+  "nomi": "Adliya organlari",
+  "belgi": "hujjat",
+  "kanal": "Adliya organi yoki my.gov.uz",
+  "url": "https://my.gov.uz",
+  "tavsif": "Notarius, mediatsiya, davlat xizmatlari",
+  "arizalar": [
+   "Notarius harakati ustidan şikoyat",
+   "Mediatsiyaga murojaat",
+   "Davlat xizmati sifati ustidan şikoyat"
+  ]
+ },
+ {
+  "id": "prezident",
+  "nomi": "Prezident virtual qabulxonasi",
+  "belgi": "togri",
+  "kanal": "pm.gov.uz",
+  "url": "https://pm.gov.uz",
+  "tavsif": "Boşqa idoralar hal qilmagan masalalar",
+  "arizalar": [
+   "Murojaat",
+   "Şikoyat",
+   "Taklif"
+  ]
+ },
+ {
+  "id": "ombudsman",
+  "nomi": "Inson huquqlari böyiça vakil (Ombudsman)",
+  "belgi": "odam",
+  "kanal": "Ombudsman devoni",
+  "url": "https://my.gov.uz",
+  "tavsif": "Huquq va erkinliklar buzilganda",
+  "arizalar": [
+   "Huquq buzilişi haqida murojaat"
+  ]
+ }
+]

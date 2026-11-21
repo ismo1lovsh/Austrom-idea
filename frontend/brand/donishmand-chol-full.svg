@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" role="img" aria-label="Donişmand AI">
+  <svg x="0" y="0" width="160" height="160" viewBox="0 0 512 512">
+  <!-- Animatsiya uchun qismlar: #badge, #chapan, #face, #doppi, #brows, #eyes, #beard, #mustache, #spark -->
+  <defs>
+    <radialGradient id="gBg" cx="40%" cy="30%" r="80%"><stop offset="0" stop-color="#23949C"/><stop offset=".55" stop-color="#0F5F66"/><stop offset="1" stop-color="#07363B"/></radialGradient>
+    <radialGradient id="gSkin" cx="42%" cy="38%" r="70%"><stop offset="0" stop-color="#FAD9B8"/><stop offset=".6" stop-color="#EDB98D"/><stop offset="1" stop-color="#C98559"/></radialGradient>
+    <radialGradient id="gNose" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#F7CBA4"/><stop offset="1" stop-color="#D18E62"/></radialGradient>
+    <linearGradient id="gBeard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#E9EDF0"/><stop offset="1" stop-color="#C5CDD3"/></linearGradient>
+    <linearGradient id="gBeardSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset=".75" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient>
+    <radialGradient id="gDoppi" cx="38%" cy="28%" r="80%"><stop offset="0" stop-color="#4A4A4A"/><stop offset=".45" stop-color="#1C1C1C"/><stop offset="1" stop-color="#050505"/></radialGradient>
+    <linearGradient id="gChapan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0A2C55"/><stop offset=".5" stop-color="#174A86"/><stop offset="1" stop-color="#0A2C55"/></linearGradient>
+    <linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient>
+    <clipPath id="clip"><circle cx="256" cy="256" r="236"/></clipPath>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#00262A" flood-opacity=".45"/></filter>
+  </defs>
+
+  <ellipse cx="256" cy="496" rx="170" ry="12" fill="#000" opacity=".18"/>
+  <g id="badge"><circle cx="256" cy="256" r="244" fill="#F2B134"/><circle cx="256" cy="256" r="236" fill="url(#gBg)"/></g>
+
+  <g clip-path="url(#clip)">
+    <!-- chapan (yo'l-yo'l to'n) -->
+    <g id="chapan" filter="url(#soft)">
+      <path d="M70 520C80 430 160 392 210 384L256 446L302 384C352 392 432 430 442 520Z" fill="url(#gChapan)"/>
+      <g stroke-width="7" opacity=".9">
+        <path d="M120 520C126 462 150 430 178 412" stroke="#F2B134"/><path d="M150 520C156 470 176 440 200 424" stroke="#2BB3A3"/>
+        <path d="M392 520C386 462 362 430 334 412" stroke="#F2B134"/><path d="M362 520C356 470 336 440 312 424" stroke="#2BB3A3"/>
+        <path d="M96 520C102 470 124 440 150 420" stroke="#C0392B"/><path d="M416 520C410 470 388 440 362 420" stroke="#C0392B"/>
+      </g>
+      <path d="M70 520C80 430 160 392 210 384L256 446L302 384C352 392 432 430 442 520Z" fill="url(#gShade)"/>
+    </g>
+
+    <!-- quloqlar va yuz -->
+    <g id="face" filter="url(#soft)">
+      <ellipse cx="168" cy="262" rx="17" ry="27" fill="url(#gNose)"/><ellipse cx="344" cy="262" rx="17" ry="27" fill="url(#gNose)"/>
+      <ellipse cx="256" cy="262" rx="88" ry="100" fill="url(#gSkin)"/>
+      <ellipse cx="226" cy="222" rx="34" ry="20" fill="#fff" opacity=".18"/>
+      <circle cx="204" cy="272" r="17" fill="#E8826F" opacity=".35"/><circle cx="308" cy="272" r="17" fill="#E8826F" opacity=".35"/>
+    </g>
+
+    <!-- qoshlar va ko'zlar -->
+    <g id="brows">
+      <path d="M198 214C210 196 236 194 248 210C232 206 214 210 202 222Z" fill="#FFFFFF" stroke="#C9D1D6" stroke-width="2"/>
+      <path d="M314 214C302 196 276 194 264 210C280 206 298 210 310 222Z" fill="#FFFFFF" stroke="#C9D1D6" stroke-width="2"/>
+    </g>
+    <g id="eyes" fill="none" stroke="#3B2A20" stroke-width="5.5" stroke-linecap="round">
+      <path d="M207 238Q223 251 239 238"/><path d="M273 238Q289 251 305 238"/>
+      <path d="M198 244l-7 4M314 244l7 4" stroke-width="3" opacity=".6"/>
+    </g>
+
+    <!-- soqol -->
+    <g id="beard" filter="url(#soft)">
+      <path d="M168 266C164 330 186 404 222 438C232 448 244 458 256 464C268 458 280 448 290 438C326 404 348 330 344 266C334 296 306 312 292 306C282 320 268 326 256 326C244 326 230 320 220 306C206 312 178 296 168 266Z" fill="url(#gBeard)"/>
+      <path d="M168 266C164 330 186 404 222 438C232 448 244 458 256 464C268 458 280 448 290 438C326 404 348 330 344 266C334 296 306 312 292 306C282 320 268 326 256 326C244 326 230 320 220 306C206 312 178 296 168 266Z" fill="url(#gBeardSide)"/>
+      <g fill="none" stroke="#B9C3CA" stroke-width="3" stroke-linecap="round" opacity=".8">
+        <path d="M200 330C204 370 218 400 236 424"/><path d="M228 344C230 378 238 406 248 430"/><path d="M256 340V440"/>
+        <path d="M284 344C282 378 274 406 264 430"/><path d="M312 330C308 370 294 400 276 424"/>
+      </g>
+    </g>
+
+    <!-- burun va mo'ylov -->
+    <path d="M256 236C243 260 238 280 256 290C274 280 269 260 256 236Z" fill="url(#gNose)"/>
+    <ellipse cx="250" cy="270" rx="5" ry="7" fill="#fff" opacity=".35"/>
+    <g id="mustache" filter="url(#soft)">
+      <path d="M256 294C236 280 204 284 186 308C210 302 232 310 256 304C280 310 302 302 326 308C308 284 276 280 256 294Z" fill="url(#gBeard)"/>
+    </g>
+
+    <!-- chust do'ppi -->
+    <g id="doppi" filter="url(#soft)">
+      <path d="M160 200C158 136 200 100 256 100C312 100 354 136 352 200Z" fill="url(#gDoppi)"/>
+      <path d="M156 188Q256 170 356 188L356 210Q256 192 156 210Z" fill="#111"/>
+      <path d="M164 198l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity=".85"/>
+      <g fill="#FFFFFF">
+        <path d="M256 112C274 126 276 152 256 170C238 152 240 126 256 112Z"/>
+        <path d="M206 128C222 136 230 160 216 178C200 166 196 142 206 128Z" opacity=".95"/>
+        <path d="M306 128C290 136 282 160 296 178C312 166 316 142 306 128Z" opacity=".95"/>
+      </g>
+      <g fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round">
+        <path d="M256 112C262 104 270 104 272 110"/><path d="M206 128C204 118 210 112 216 116"/><path d="M306 128C308 118 302 112 296 116"/>
+      </g>
+      <ellipse cx="222" cy="120" rx="26" ry="12" fill="#fff" opacity=".12" transform="rotate(-25 222 120)"/>
+    </g>
+  </g>
+
+  <!-- donishmandlik uchquni (logotipdagidek) -->
+  <path id="spark" d="M392 70L401 97L428 106L401 115L392 142L383 115L356 106L383 97Z" fill="#F2B134" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="200" cy="96" rx="120" ry="40" fill="#FFFFFF" opacity=".07" transform="rotate(-20 200 96)"/>
+</svg>
+  <text x="182" y="100" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="62" fill="#10202A">Donişmand</text>
+  <rect x="526" y="52" width="82" height="54" rx="15" fill="#F2B134"/><text x="567" y="91" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="32" fill="#3A2A00">AI</text>
+</svg>

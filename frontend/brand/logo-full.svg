@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-label="Donişmand AI">
+  <g id="mark">
+    <rect id="bg" width="120" height="120" rx="30" fill="#0F5F66"/>
+    <path id="stem" d="M38 30V90" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path id="bowl" d="M38 30H57C77 30 90 43 90 60C90 77 77 90 57 90H38" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <g id="lines" stroke="#9FD3D6" stroke-width="5" stroke-linecap="round"><path d="M51 51H70"/><path d="M51 61H75"/><path d="M51 71H65"/></g>
+    <path id="spark" d="M93 13L96.5 23.5L107 27L96.5 30.5L93 41L89.5 30.5L79 27L89.5 23.5Z" fill="#F2B134"/>
+  </g>
+  <text id="word" x="146" y="78" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="52" fill="#10202A">Donişmand</text>
+  <g id="ai"><rect x="422" y="38" width="70" height="46" rx="14" fill="#F2B134"/><text x="457" y="72" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="28" fill="#3A2A00">AI</text></g>
+</svg>

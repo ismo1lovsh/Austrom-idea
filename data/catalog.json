@@ -1,0 +1,50 @@
+[
+ {
+  "url": "https://lex.uz/uz/docs/-6445145",
+  "short": "KONST",
+  "type": "konst",
+  "soha": "Konstitutsiyaviy huquq"
+ },
+ {
+  "url": "https://lex.uz/uz/docs/-111453",
+  "short": "JK",
+  "type": "kodeks",
+  "soha": "Jinoyat huquqi"
+ },
+ {
+  "url": "https://lex.uz/uz/docs/-97664",
+  "short": "MJTK",
+  "type": "kodeks",
+  "soha": "Ma'muriy huquq"
+ },
+ {
+  "url": "https://lex.uz/uz/docs/-6257288",
+  "short": "MK",
+  "type": "kodeks",
+  "soha": "Mehnat huquqi"
+ },
+ {
+  "url": "https://lex.uz/uz/docs/-3517337",
+  "short": "FPK",
+  "type": "kodeks",
+  "soha": "Fuqarolik protsessi"
+ },
+ {
+  "url": "https://lex.uz/uz/docs/-111460",
+  "short": "JPK",
+  "type": "kodeks",
+  "soha": "Jinoyat protsessi"
+ },
+ {
+  "url": "https://lex.uz/uz/docs/-8129755",
+  "short": "PF58",
+  "type": "pf",
+  "soha": "Ta'lim va fan"
+ },
+ {
+  "url": "https://lex.uz/uz/docs/-7484114",
+  "short": "VMQ244",
+  "type": "vmq",
+  "soha": "Bojxona"
+ }
+]

@@ -1,0 +1,142 @@
+{
+ "modda": {
+  "MJTK-227": {
+   "sarlavha": "MJTK 227-modda. Bojxona nazorati zonasi rejimini buziş",
+   "umumiy": "Aeroport, temir yöl stansiyasi yoki çegara punktida bojxona nazorati zonasi böladi. Bu modda u yerga ruxsatsiz kiriş yoki uning tartibini buziş uçun jarimani belgilaydi.",
+   "bandlar": [
+    {
+     "nomi": "Huquqbuzarlik",
+     "sodda": "Bojxona ruxsatisiz zona çegarasidan ötiş, zona içida yuriş yoki zona tartibini boşqa yöl bilan buziş.",
+     "misol": "Aeroportda yöl-yöriqni kutmasdan «Faqat xodimlar uçun» deb yozilgan bojxona zonasiga kirib ketiş.",
+     "oqibat": ""
+    },
+    {
+     "nomi": "Fuqarolar uçun",
+     "sodda": "Oddiy fuqaroga jarima solinadi.",
+     "misol": "Yöloviçi zona tartibini buzdi.",
+     "oqibat": "1 dan 3 BHM gaça jarima"
+    },
+    {
+     "nomi": "Mansabdor şaxslar uçun",
+     "sodda": "Lavozimdagi şaxsga jarima kattaroq.",
+     "misol": "Taşkilot rahbari xodimlarini ruxsatsiz zonaga olib kirdi.",
+     "oqibat": "3 dan 5 BHM gaça jarima"
+    }
+   ],
+   "eslatma": "Bu ma'muriy javobgarlik, jinoiy emas: sudlanganlik qolmaydi."
+  },
+  "JK-169": {
+   "sarlavha": "JK 169-modda. Öğirlik",
+   "umumiy": "Birovning mulkini yaşirinça olib qöyiş — öğirlik. Jazo holatga qarab tört qismda belgilangan.",
+   "bandlar": [
+    {
+     "nomi": "1-qism",
+     "sodda": "Bir kişi, birinçi marta, ağirlaştiruvçi holatsiz.",
+     "misol": "Dökondan yaşirinça telefon olib çiqiş.",
+     "oqibat": "Jarimadan 3 yilgaça ozodlikdan mahrum qilişgaça"
+    },
+    {
+     "nomi": "2-qism",
+     "sodda": "Sumka yoki kiyimdan, guruh bölib til biriktirib, uy yoki omborga kirib.",
+     "misol": "Ikki döst kelişib sumka olib qöydi.",
+     "oqibat": "3–5 yil ozodlikdan mahrum qiliş yoki jarima"
+    },
+    {
+     "nomi": "3-qism",
+     "sodda": "Takroran, köp miqdorda yoki axborot tizimiga kirib.",
+     "misol": "Avval sudlangan odam yana öğirladi.",
+     "oqibat": "5–8 yil ozodlikdan mahrum qiliş"
+    },
+    {
+     "nomi": "4-qism",
+     "sodda": "Juda köp miqdorda, uyuşgan guruh tomonidan.",
+     "misol": "Rollari taqsimlangan guruh omborlarni öğirladi.",
+     "oqibat": "8–15 yil ozodlikdan mahrum qiliş"
+    }
+   ],
+   "eslatma": ""
+  }
+ },
+ "tartib": {
+  "nomi": "Sud ajrimi ustidan xususiy şikoyat beriş",
+  "idora": "Yuqori turuvçi sud (şikoyat ajrim çiqargan sud orqali yuboriladi)",
+  "qadamlar": [
+   {
+    "sarlavha": "Ajrim nusxasini oling",
+    "matn": "Sud ajrimining nusxasini sud devonxonasidan yoki my.sud.uz dagi şaxsiy kabinetdan oling."
+   },
+   {
+    "sarlavha": "Muddatni aniqlang",
+    "matn": "Şikoyat beriş muddati Fuqarolik protsessual kodeksida belgilangan. AI uni kodeks matnidan topib beradi."
+   },
+   {
+    "sarlavha": "Şikoyatni tayyorlang",
+    "matn": "Qaysi ajrim, nega rozi emassiz va nima söraysiz — şularni yozing. «Hujjat» bölimida AI tayyorlab beradi."
+   },
+   {
+    "sarlavha": "Topşiring",
+    "matn": "my.sud.uz orqali elektron yoki sudga qöğozda topşiring va qabul qilinganini kuzating."
+   }
+  ],
+  "hujjatlar": [
+   "Şikoyat matni",
+   "Sud ajrimi nusxasi",
+   "Taraflar soniga qarab nusxalar"
+  ],
+  "muddat": "",
+  "manbalar": []
+ },
+ "hujjat_savollar": [
+  {
+   "kalit": "fio",
+   "savol": "F.I.Sh. va yaşaş manzilingiz"
+  },
+  {
+   "kalit": "sud",
+   "savol": "Ajrimni qaysi sud çiqargan?"
+  },
+  {
+   "kalit": "sana",
+   "savol": "Ajrim sanasi va iş raqami"
+  },
+  {
+   "kalit": "sabab",
+   "savol": "Ajrimga nega rozi emassiz? (qisqa)"
+  }
+ ],
+ "hujjat": {
+  "turi": "Xususiy şikoyat",
+  "nega": "Sud ajrimiga protestni faqat prokuror keltiradi. Siz iş taraf sifatida xususiy şikoyat berasiz.",
+  "idora": "Yuqori turuvçi sud",
+  "kanal": "Ajrim çiqargan sud orqali: my.sud.uz da elektron yoki qöğozda",
+  "hujjat": {
+   "kimga": [
+    "[Viloyat] sudi fuqarolik işlari böyiça",
+    "sudlov hay'atiga",
+    "[Tuman] sudi orqali"
+   ],
+   "kimdan": [
+    "Arizaçi: [F.I.Sh.]",
+    "Manzil: [manzil]",
+    "Tel: [telefon]"
+   ],
+   "sarlavha": "XUSUSIY ŞIKOYAT",
+   "matn": [
+    "[Tuman] sudining [sana]dagi [iş raqami]-sonli ajrimi bilan mening da'vo arizam qaytarildi.",
+    "Men uşbu ajrim bilan rozi emasman, çunki [sabab]. Da'vo arizasi qonun talablariga muvofiq rasmiylaştirilgan va zarur hujjatlar ilova qilingan edi.",
+    "Yuqoridagilarga asosan, ajrim asossiz deb hisoblayman."
+   ],
+   "soraymiz": [
+    "[Tuman] sudining [sana]dagi ajrimini bekor qiliş.",
+    "Da'vo arizasini iş yuritişga qabul qiliş masalasini qayta körib çiqiş uçun birinçi instansiya sudiga yuboriş."
+   ],
+   "ilovalar": [
+    "Ajrim nusxasi",
+    "Da'vo arizasi nusxasi",
+    "Şikoyatning taraflar uçun nusxalari"
+   ]
+  },
+  "mediatsiya": "",
+  "manbalar": []
+ }
+}

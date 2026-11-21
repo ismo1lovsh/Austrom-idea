@@ -1,0 +1,179 @@
+[
+ {
+  "id": "bojxona",
+  "nomi": "Çegaradan olib kiriş normalari",
+  "belgi": "chegara",
+  "video": "bojxona",
+  "huquqlar": [
+   "Havo transportida — 1000 AQŞ dollarigaça tovarni bojsiz olib kiriş",
+   "Temir yöl va daryo transportida — 500 AQŞ dollarigaça",
+   "Avtomobil (piyoda) ötkaziş punktlari orqali — 300 AQŞ dollarigaça",
+   "Xalqaro kuryerlik jönatmalari orqali — 200 AQŞ dollarigaça",
+   "Xalqaro poçta jönatmalari orqali — 100 AQŞ dollarigaça"
+  ],
+  "majburiyatlar": [
+   "Normadan oşgan qism uçun yagona bojxona tölovini tölaş",
+   "Havo yöli bilan çet elda 3 kundan kam (boşqa transportda 2 kundan kam) bölsangiz, norma qöllanmaydi — tovarning töliq qiymatidan tölov olinadi",
+   "Bir oyda 3 va undan ortiq safar qilsangiz ham norma qöllanmaydi",
+   "21 yoşgaça spirtli içimlik va tamaki mahsulotlarini olib kirmaslik"
+  ],
+  "asos": "Vazirlar Mahkamasining 19.04.2025 yildagi 244-son qarori, 1-band va 3-band «a»; 3-ilova, 10–11-bandlar",
+  "sorov": "jismoniy shaxslar tovarlarni bojsiz olib kirish normalari aeroport havo transporti"
+ },
+ {
+  "id": "chegara",
+  "nomi": "Çegaradan ötiş",
+  "belgi": "chegara",
+  "huquqlar": [
+   "Respublikadan çiqiş va qaytib kiriş erkinligi (qonunda belgilangan çeklovlardan taşqari)",
+   "Bojxona körigi sababini va tartibini sörab biliş",
+   "Bojxona xodimi harakatlari ustidan şikoyat qiliş"
+  ],
+  "majburiyatlar": [
+   "Pasport va zarur hujjatlarni taqdim etiş",
+   "Belgilangan miqdordan ortiq valyuta va tovarlarni deklaratsiya qiliş",
+   "Taqiqlangan buyumlarni olib ötmaslik"
+  ],
+  "sorov": "chegaradan o'tish bojxona nazorati fuqaroning huquq va majburiyatlari"
+ },
+ {
+  "id": "saylov",
+  "nomi": "Saylov",
+  "belgi": "hujjat",
+  "huquqlar": [
+   "18 yoşga tölgan fuqaro saylaş huquqiga ega",
+   "Yaşirin ovoz beriş: hech kim tanlovingizni bilişga haqli emas",
+   "Saylovçilar röyxatida öz ma'lumotlaringizni tekşiriş va xatoni tuzatişni talab qiliş"
+  ],
+  "majburiyatlar": [
+   "Faqat öz nomingizdan va bir marta ovoz beriş",
+   "Saylov uçastkasida tartibga rioya qiliş",
+   "Ovozni sotmaslik va boşqalarni majburlamaslik"
+  ],
+  "sorov": "saylov huquqi saylovchining huquq va majburiyatlari ovoz berish"
+ },
+ {
+  "id": "politsiya",
+  "nomi": "Politsiya va YPX bilan muloqot",
+  "belgi": "politsiya",
+  "huquqlar": [
+   "Xodimdan xizmat guvohnomasini körsatişni sörash",
+   "Töxtatiş sababini biliş",
+   "Bayonnoma mazmuni bilan tanişib, e'tirozingizni yoziş",
+   "Advokat yordamidan foydalaniş"
+  ],
+  "majburiyatlar": [
+   "Xodimning qonuniy talablarini bajariş",
+   "Haydovçi bölsangiz, belgilangan hujjatlarni taqdim etiş",
+   "Qarşilik körsatmaslik va haqoratlamaslik"
+  ],
+  "sorov": "ichki ishlar xodimining qonuniy talabi fuqaroning huquqlari bayonnoma haydovchi hujjatlari"
+ },
+ {
+  "id": "mehnat",
+  "nomi": "Mehnat",
+  "belgi": "guruh",
+  "huquqlar": [
+   "Yozma mehnat şartnomasi tuziş",
+   "Ish haqini öz vaqtida va töliq oliş",
+   "Har yilgi haq to'lanadigan mehnat ta'tili",
+   "Asossiz işdan böşatişdan himoyalaniş"
+  ],
+  "majburiyatlar": [
+   "Mehnat intizomiga rioya qiliş",
+   "Mehnat muhofazasi qoidalariga amal qiliş",
+   "Ish beruvçining mol-mulkini asraş"
+  ],
+  "sorov": "xodimning huquq va majburiyatlari mehnat shartnomasi ish haqi"
+ },
+ {
+  "id": "iste'molchi",
+  "nomi": "Xarid va iste'molçi",
+  "belgi": "pul",
+  "huquqlar": [
+   "Sifatli tovar va xizmat oliş",
+   "Sifatsiz tovarni almaştiriş yoki pulni qaytarib oliş",
+   "Tovar haqida töliq ma'lumot oliş"
+  ],
+  "majburiyatlar": [
+   "Çek va kafolat taloni saqlaş",
+   "Tovardan yöriqnomaga muvofiq foydalaniş"
+  ],
+  "sorov": "iste'molchilarning huquqlarini himoya qilish sifatsiz tovar"
+ },
+ {
+  "id": "talim",
+  "nomi": "Ta'lim",
+  "belgi": "odam",
+  "huquqlar": [
+   "Bepul umumiy örta ta'lim oliş",
+   "Ta'lim tilini tanlaş",
+   "Kamsitişsiz ta'lim oliş"
+  ],
+  "majburiyatlar": [
+   "Ta'lim muassasasi ustaviga rioya qiliş",
+   "Mulkni asraş va boşqalarning huquqini hurmat qiliş"
+  ],
+  "sorov": "ta'lim olish huquqi o'quvchining huquq va majburiyatlari"
+ },
+ {
+  "id": "oila",
+  "nomi": "Oila va nikoh",
+  "belgi": "uy",
+  "huquqlar": [
+   "Er-xotinning teng huquqliligi",
+   "Bolalarning ota-ona tomonidan ta'minlaniş huquqi",
+   "Aliment undiriş"
+  ],
+  "majburiyatlar": [
+   "Ota-onaning bolalarni tarbiyalaş va ta'minlaş majburiyati",
+   "Voyaga yetgan bolalarning muhtoj ota-onaga ğamxörlik qilişi"
+  ],
+  "sorov": "oila nikoh er-xotin ota-ona bolalar huquq va majburiyatlari aliment"
+ },
+ {
+  "id": "internet",
+  "nomi": "Internet va şaxsiy ma'lumotlar",
+  "belgi": "ogohlantirish",
+  "huquqlar": [
+   "Şaxsiy ma'lumotlaringiz roziligingizsiz tarqatilmasligi",
+   "Şa'n va qadr-qimmatni himoya qiliş",
+   "Noqonuniy tarqatilgan ma'lumotni öçirişni talab qiliş"
+  ],
+  "majburiyatlar": [
+   "Boşqalarning rasmini va ma'lumotlarini ruxsatsiz tarqatmaslik",
+   "Haqorat va tuhmat qilmaslik",
+   "Yolğon xabar tarqatmaslik"
+  ],
+  "sorov": "shaxsiy ma'lumotlar internet haqorat tuhmat javobgarlik"
+ },
+ {
+  "id": "harbiy",
+  "nomi": "Harbiy xizmat",
+  "belgi": "togri",
+  "huquqlar": [
+   "Qonunda belgilangan asoslarda keçiktiriş oliş",
+   "Tibbiy körikdan ötiş"
+  ],
+  "majburiyatlar": [
+   "Çaqiruv qögoziga binoan mudofaa işlari böyiça bölimga keliş",
+   "Harbiy hisobda turiş"
+  ],
+  "sorov": "harbiy xizmat chaqiruv majburiyat muddatli harbiy xizmat"
+ },
+ {
+  "id": "soliq",
+  "nomi": "Soliq",
+  "belgi": "hujjat",
+  "huquqlar": [
+   "Soliq organidan bepul tuşuntiriş oliş",
+   "Soliq organi qarori ustidan şikoyat qiliş",
+   "Ortiqça tölangan soliqni qaytarib oliş"
+  ],
+  "majburiyatlar": [
+   "Soliqni öz vaqtida töliq tölaş",
+   "Daromad haqida deklaratsiya topşiriş (belgilangan hollarda)"
+  ],
+  "sorov": "soliq to'lovchining huquq va majburiyatlari"
+ }
+]

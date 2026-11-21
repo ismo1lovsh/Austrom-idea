@@ -1,0 +1,139 @@
+[
+ {
+  "id": "pf58",
+  "doc": "PF58",
+  "holat": "qabul",
+  "saralash": "2026-11-20",
+  "nomi": "Oliy ta'lim, fan va innovatsiyalar tizimini takomillaştirişning qöşimça çora-tadbirlari töğrisida",
+  "soha": "Ta'lim va fan",
+  "turi": "Prezident farmoni PF-58",
+  "joylangan": "2026-04-10",
+  "kuchga": "2026-04-13",
+  "manba": "https://lex.uz/uz/docs/-8129755",
+  "qisqa": "«U 10» dasturi bilan 10 ta OTMga milliy tadqiqot universiteti maqomi beriladi. 2027-yildan OTMlar milliy reyting natijasiga qarab moliyalaştiriladi, «Study in Uzbekistan» platformasi orqali xorijiy talabalar qabul qilinadi.",
+  "bolimlar": []
+ },
+ {
+  "id": "skuter",
+  "nomi": "Elektr samokat va giroskuterlarda harakatlanish tartibi to'g'risida",
+  "soha": "Transport",
+  "turi": "Qonun loyihasi",
+  "joylangan": "2026-11-19",
+  "tugash": "2026-12-04",
+  "qisqa": "Elektr samokat haydovçilari uçun yoş çegarasi, tezlik limiti va dubulğa majburiyati joriy qilinadi. Piyodalar yölkasida harakat çeklanadi.",
+  "bolimlar": [
+   {
+    "id": "1",
+    "sarlavha": "1-modda. Ushbu Qonunning maqsadi",
+    "matn": "Ushbu Qonunning maqsadi elektr samokat, giroskuter va shu kabi shaxsiy harakatlanish vositalaridan foydalanish sohasidagi munosabatlarni tartibga solishdan, yo'l harakati ishtirokchilarining hayoti va sog'lig'ini muhofaza qilishdan iborat."
+   },
+   {
+    "id": "2",
+    "sarlavha": "2-modda. Asosiy tushunchalar",
+    "matn": "Shaxsiy harakatlanish vositasi — elektr dvigatelli, bir kishi harakatlanishi uchun mo'ljallangan, quvvati 0,25 kVt dan ortiq bo'lmagan vosita (elektr samokat, giroskuter, monokolesa)."
+   },
+   {
+    "id": "3",
+    "sarlavha": "3-modda. Boshqarish uchun yosh chegarasi",
+    "matn": "Shaxsiy harakatlanish vositasini o'n olti yoshga to'lgan shaxslar boshqarishi mumkin. O'n olti yoshga to'lmagan shaxslar faqat ota-onasi yoki ularning o'rnini bosuvchi shaxslar hamrohligida, maxsus ajratilgan hududlarda harakatlanishi mumkin."
+   },
+   {
+    "id": "4",
+    "sarlavha": "4-modda. Harakatlanish tezligi va joylari",
+    "matn": "Piyodalar yo'lkasida harakatlanish tezligi soatiga 10 kilometrdan, velosiped yo'lkasida esa soatiga 25 kilometrdan oshmasligi kerak. Avtomobil yo'lining qatnov qismida shaxsiy harakatlanish vositasida harakatlanish taqiqlanadi."
+   },
+   {
+    "id": "5",
+    "sarlavha": "5-modda. Xavfsizlik talablari",
+    "matn": "Shaxsiy harakatlanish vositasini boshqaruvchi dubulg'a kiyishi shart. Qorong'i vaqtda vosita old tomonda oq, orqa tomonda qizil chiroq bilan jihozlangan bo'lishi kerak. Ikki va undan ortiq kishining bitta vositada harakatlanishi taqiqlanadi."
+   },
+   {
+    "id": "6",
+    "sarlavha": "6-modda. Ijara xizmatlari",
+    "matn": "Shaxsiy harakatlanish vositalarini ijaraga beruvchi tashkilotlar foydalanuvchining yoshini tekshirishi va ilovada harakatlanish qoidalarini ko'rsatishi shart."
+   },
+   {
+    "id": "7",
+    "sarlavha": "7-modda. Javobgarlik",
+    "matn": "Ushbu Qonun talablarini buzishda aybdor bo'lgan shaxslar qonunchilikda belgilangan tartibda javobgar bo'ladi."
+   },
+   {
+    "id": "8",
+    "sarlavha": "8-modda. Qonunning kuchga kirishi",
+    "matn": "Ushbu Qonun rasmiy e'lon qilingan kundan e'tiboran uch oy o'tgach kuchga kiradi."
+   }
+  ]
+ },
+ {
+  "id": "onlayn",
+  "nomi": "Masofaviy (onlayn) savdoda iste'molchilar huquqlarini himoya qilish to'g'risida",
+  "soha": "Iste'molchilar huquqi",
+  "turi": "Qonun loyihasi",
+  "joylangan": "2026-11-17",
+  "tugash": "2026-12-01",
+  "qisqa": "Internet orqali xarid qilingan tovarni 14 kun içida sababsiz qaytariş huquqi va sotuvçining pulni qaytariş muddati belgilanadi.",
+  "bolimlar": [
+   {
+    "id": "1",
+    "sarlavha": "1-modda. Qo'llanish sohasi",
+    "matn": "Ushbu Qonun internet-do'konlar, marketpleyslar va ijtimoiy tarmoqlar orqali tovar sotish va xizmat ko'rsatishda vujudga keladigan munosabatlarga nisbatan qo'llaniladi."
+   },
+   {
+    "id": "2",
+    "sarlavha": "2-modda. Sotuvchi haqidagi ma'lumot",
+    "matn": "Sotuvchi o'z nomi, soliq to'lovchining identifikatsiya raqami, manzili va telefon raqamini sahifada aniq ko'rsatishi shart."
+   },
+   {
+    "id": "3",
+    "sarlavha": "3-modda. Tovarni qaytarish huquqi",
+    "matn": "Iste'molchi masofaviy usulda xarid qilingan tovarni u topshirilgan kundan e'tiboran o'n to'rt kun ichida sababini ko'rsatmasdan qaytarishga haqli. Bunda tovarning tovar ko'rinishi va iste'mol xususiyatlari saqlangan bo'lishi kerak."
+   },
+   {
+    "id": "4",
+    "sarlavha": "4-modda. Pulni qaytarish muddati",
+    "matn": "Sotuvchi tovar qaytarilgan kundan e'tiboran o'n kun ichida iste'molchiga to'langan pul mablag'ini to'liq qaytarishi shart. Yetkazib berish xarajatlari, agar tovar sifatsiz bo'lsa, sotuvchi hisobidan qoplanadi."
+   },
+   {
+    "id": "5",
+    "sarlavha": "5-modda. Qaytarilmaydigan tovarlar",
+    "matn": "Iste'molchining buyurtmasi asosida individual tayyorlangan tovarlar, gigiyena vositalari va ochilgan raqamli kontent qaytarilmaydi."
+   },
+   {
+    "id": "6",
+    "sarlavha": "6-modda. Marketpleysning majburiyatlari",
+    "matn": "Marketpleys iste'molchining shikoyatini yetti kun ichida ko'rib chiqishi va javob berishi shart."
+   }
+  ]
+ },
+ {
+  "id": "telefon",
+  "nomi": "Umumta'lim maktablarida mobil qurilmalardan foydalanish tartibi to'g'risida",
+  "soha": "Ta'lim",
+  "turi": "Hukumat qarori loyihasi",
+  "joylangan": "2026-11-10",
+  "tugash": "2026-11-25",
+  "qisqa": "Dars vaqtida telefonlar sinfdagi maxsus javonda saqlanadi, tanaffusda va favqulodda holatda foydalaniş mumkin.",
+  "bolimlar": [
+   {
+    "id": "1",
+    "sarlavha": "1-band",
+    "matn": "Umumta'lim maktablarida dars mashg'ulotlari vaqtida o'quvchilarning mobil telefonlari sinfxonadagi maxsus javonda saqlanadi."
+   },
+   {
+    "id": "2",
+    "sarlavha": "2-band",
+    "matn": "Tanaffus vaqtida, shuningdek favqulodda holatlarda o'quvchilar mobil telefondan foydalanishi mumkin."
+   },
+   {
+    "id": "3",
+    "sarlavha": "3-band",
+    "matn": "O'qituvchi o'quv maqsadida mobil qurilmalardan foydalanishga ruxsat berishi mumkin."
+   },
+   {
+    "id": "4",
+    "sarlavha": "4-band",
+    "matn": "Telefonlarning saqlanishi uchun maktab ma'muriyati javobgar hisoblanadi."
+   }
+  ]
+ }
+]

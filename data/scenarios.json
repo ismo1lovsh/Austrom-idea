@@ -1,0 +1,75 @@
+[
+ {
+  "id": "tonirovka",
+  "kalit": [
+   [
+    "tonir",
+    "tanirovka",
+    "oyna",
+    "shisha"
+   ],
+   [
+    "72",
+    "foiz",
+    "%",
+    "yorug"
+   ]
+  ],
+  "javob": {
+   "sarlavha": "Old oyna 72% — qonunga mos",
+   "asosiy_raqam": "Kamida 70%",
+   "javob": "Xavotir olmang, siz qoidani buzmagansiz.\nQoidaga köra, old oyna va old yon oynalar yorug'likni kamida 70 foiz ötkazişi kerak. Sizning oynangiz 72 foiz ötkazadi — bu talabdan ham yuqori.\nDemak, sizni ma'muriy javobgarlikka tortişga asos yöq. Inspektorga şu me'yorni xotirjam ayting. Baribir bayonnoma yozilsa, «rozi emasman» deb yozib qoldiring va ustidan şikoyat bering.",
+   "asos": [
+    "MJTK 126-modda 1-qism",
+    "Vazirlar Mahkamasining 11.04.2017 yildagi 237-son qarori — «Muomalaga çiqarilayotgan ğildirakli transport vositalarining xavfsizligi töğrisidagi umumiy texnik reglament» (UzTR.237-016:2017), 5-ilova, 4.3-band: old va old yon oynalarning yorug'lik ötkazuvçanligi kamida 70%"
+   ],
+   "keyingi": "hujjat",
+   "mediatsiya": "",
+   "topildi": true
+  },
+  "modda": [
+   "MJTK",
+   "126"
+  ]
+ },
+ {
+  "id": "bojxona",
+  "kalit": [
+   [
+    "aeroport",
+    "samolyot",
+    "havo yol",
+    "chet eldan",
+    "olib kir",
+    "olib kel",
+    "chegara"
+   ],
+   [
+    "norma",
+    "boj",
+    "limit",
+    "qancha",
+    "necha",
+    "dollar",
+    "miqdor"
+   ]
+  ],
+  "javob": {
+   "sarlavha": "Bojsiz olib kiriş normasi",
+   "asosiy_raqam": "Samolyotda 1000 $",
+   "javob": "Aeroport (havo yöli) orqali şaxsiy ehtiyojingiz uçun 1000 AQŞ dollarigaça bölgan narsalarni boj tölamasdan olib kirişingiz mumkin.\nBoşqa yöllar uçun normalar: poyezd va daryo — 500 $, avtomobil yoki piyoda — 300 $, kuryerlik jönatmasi — 200 $, poçta — 100 $.\nNormadan oşgan qismi uçun bojxona tölovi tölanadi. Esda tuting: samolyotda çet elda 3 kundan kam bölsangiz yoki bir oyda 3 marta va undan köp safar qilsangiz, norma qöllanmaydi.",
+   "asos": [
+    "Vazirlar Mahkamasining 19.04.2025 yildagi 244-son qarori, 1-band (2025-yil 1-maydan)",
+    "Şu qaror, 3-band «a» va 3-ilova, 10–11-bandlar"
+   ],
+   "keyingi": "yöq",
+   "mediatsiya": "",
+   "topildi": true
+  },
+  "video": "bojxona",
+  "modda": [
+   "VMQ244",
+   "1"
+  ]
+ }
+]

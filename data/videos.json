@@ -1,0 +1,23 @@
+[
+ {
+  "key": "jk169",
+  "doc": "JK",
+  "numbers": [
+   "169"
+  ],
+  "url": "static/videos/169-modda.mp4",
+  "title": "Bir harakat — tört xil jazo"
+ },
+ {
+  "key": "jpk20",
+  "doc": "JPK",
+  "bob": "20-bob",
+  "url": "static/videos/jpk-20-bob.mp4",
+  "title": "Olib qöyiş va tintuv"
+ },
+ {
+  "key": "bojxona",
+  "url": "static/videos/bojxona-normalari.mp4",
+  "title": "Çegaradan bojsiz olib kiriş normalari"
+ }
+]

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Donişmand AI">
+  <!-- Animatsiya uchun qismlar: #bg (fon), #stem (D ustuni / kitob o'qi), #bowl (D yoyi / sahifa), #lines (matn qatorlari), #spark (donishmandlik uchquni) -->
+  <rect id="bg" width="120" height="120" rx="30" fill="#0F5F66"/>
+  <path id="stem" d="M38 30V90" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path id="bowl" d="M38 30H57C77 30 90 43 90 60C90 77 77 90 57 90H38" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g id="lines" stroke="#9FD3D6" stroke-width="5" stroke-linecap="round">
+    <path d="M51 51H70"/><path d="M51 61H75"/><path d="M51 71H65"/>
+  </g>
+  <path id="spark" d="M93 13L96.5 23.5L107 27L96.5 30.5L93 41L89.5 30.5L79 27L89.5 23.5Z" fill="#F2B134"/>
+</svg>

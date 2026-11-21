@@ -1,0 +1,47 @@
+[
+ {
+  "id": "kamera_chiziq",
+  "kalit": [
+   [
+    "kamera",
+    "radar",
+    "foto",
+    "video",
+    "avtomat"
+   ],
+   [
+    "chiziq",
+    "chizig",
+    "polosa",
+    "liniya"
+   ]
+  ],
+  "idora_id": "sud",
+  "turi": "Ariza",
+  "idora": "Jinoyat ishlari bo'yicha Chilonzor tuman sudi",
+  "kimga": [
+   "Jinoyat ishlari bo'yicha",
+   "Chilonzor tuman sudi sudyasi",
+   "S.Rahmonovga"
+  ],
+  "savollar": [
+   {
+    "kalit": "fio",
+    "savol": "Ism-familiyangizni ayting yoki yozing"
+   }
+  ],
+  "huquqiy": "Prezident topshirig'iga asosan qabul qilingan Hukumat qaroriga ko'ra, 2025-yil 1-iyundan boshlab yo'l chiziqlarini bosib qoidabuzarlik sodir etish holatlarini avtomatlashtirilgan foto va video qayd etish vositalari orqali qayd etishga yo'l qo'yilmaydi (to'xtash chizig'i — «stop-liniya» bundan mustasno). Shunday ekan, menga nisbatan kamera orqali qayd etilgan holat asosida jarima qo'llanilishi qonunchilik talablariga zid hisoblanadi.",
+  "talab": "Yuqoridagilarni inobatga olib, menga nisbatan qo'llanilgan [qaror raqami va sanasi] sonli ma'muriy jarimani bekor qilishingizni so'rayman.",
+  "nega": "Kamera yo'l chizig'ini bosganlik uchun jarima yoza olmaydi. Noto'g'ri qo'llanilgan ma'muriy jarima ustidan sudga ariza beriladi.",
+  "kanal": "my.sud.uz orqali elektron yoki sudga qog'ozda",
+  "asos": [
+   "Prezident topshirig'iga asosan qabul qilingan Hukumat qarori (2025-yil may): 2025-yil 1-iyundan yo'l chiziqlarini bosish kamera orqali qayd etilmaydi, «stop-liniya» bundan mustasno"
+  ],
+  "izoh": "Kamera orqali chiziq bosilgani uchun berilgan jarima ustidan sudga ariza beriladi.",
+  "qadamlar": [
+   "Jarima haqidagi qaror raqami va sanasini toping",
+   "Arizani tayyorlang (ism-familiyangizni ayting)",
+   "my.sud.uz orqali yoki sudga qog'ozda topshiring"
+  ]
+ }
+]
