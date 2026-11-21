@@ -8,11 +8,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.responses import FileResponse, Response
+from starlette.concurrency import run_in_threadpool
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 import config
 import store
+import til
 from alifbo import yangi
 from rag import index, tokenize, BM25
 from uzref import parse_ref, norm
@@ -20,6 +22,30 @@ from uzref import parse_ref, norm
 app = FastAPI(title="Donişmand AI")
 FRONT = config.ROOT / "frontend"
 store.init()
+
+NO_TR = {"/api/status", "/api/tts", "/api/stt", "/api/document/docx", "/api/auth/oneid", "/api/auth/logout"}
+
+
+@app.middleware("http")
+async def lang_middleware(request, call_next):
+    """X-Lang: uz | uzc | ru. Rus tilida JSON javobdagi özbekça matnlar tarjima qilinadi."""
+    lang = til.parse(request.headers.get("x-lang", ""))
+    tok = til.LANG.set(lang)
+    try:
+        resp = await call_next(request)
+    finally:
+        til.LANG.reset(tok)
+    path = request.url.path
+    if lang != "ru" or not path.startswith("/api/") or path in NO_TR or "application/json" not in resp.headers.get("content-type", ""):
+        return resp
+    body = b"".join([c async for c in resp.body_iterator])
+    headers = {k: v for k, v in resp.headers.items() if k.lower() != "content-length"}
+    try:
+        data = await run_in_threadpool(til.tr_obj, json.loads(body))
+        body = json.dumps(data, ensure_ascii=False).encode("utf-8")
+    except Exception:
+        pass
+    return Response(body, status_code=resp.status_code, headers=headers, media_type="application/json")
 
 
 def load(name, default):
@@ -38,12 +64,12 @@ def template_for(text):
 
 
 def fill_template(t, holat, j):
-    fio = (j.get("fio") or "").strip()
+    fio = til.to_input((j.get("fio") or "").strip())
     if not fio:
         return {"turi": yangi(t["turi"]), "nega": yangi(t["nega"]), "idora": yangi(t["idora"]), "kanal": yangi(t["kanal"]),
                 "yetishmaydi": [{"kalit": "fio", "savol": yangi(t["savollar"][0]["savol"])}], "asos": [yangi(a) for a in t["asos"]],
                 "hujjat": {}, "mediatsiya": "", "manbalar": []}
-    story = holat.strip()
+    story = til.to_input(holat.strip())
     if not config.MOCK:
         try:
             from llm import formal
@@ -54,6 +80,12 @@ def fill_template(t, holat, j):
         story = story[0].lower() + story[1:]
     if story and story[-1] not in ".!?":
         story += "."
+    if til.cur() == "ru":
+        h = {"uslub": "ariza", "kimga": [til.ru(x) for x in t["kimga"]], "kimdan": [f"От заявителя, гражданина {fio}"], "sarlavha": "ЗАЯВЛЕНИЕ",
+             "matn": [f"Я, заявитель {fio}, настоящим сообщаю Вам, что {story}", til.ru(t["huquqiy"]), til.ru(t["talab"])],
+             "soraymiz": [], "ilovalar": [], "imzo": ["Заявитель", fio]}
+        return {"turi": til.ru(t["turi"]), "nega": til.ru(t["nega"]), "idora": til.ru(t["idora"]), "kanal": t["kanal"],
+                "yetishmaydi": [], "asos": [til.ru(a) for a in t["asos"]], "hujjat": h, "mediatsiya": "", "manbalar": []}
     h = {"uslub": "ariza", "kimga": t["kimga"], "kimdan": [f"Arizachi fuqaro {fio}dan"], "sarlavha": "ARIZA",
          "matn": [f"Men, arizachi {fio}, ushbu orqali Sizga shuni ma'lum qilmoqchimanki, {story}", t["huquqiy"], t["talab"]],
          "soraymiz": [], "ilovalar": [], "imzo": ["Arizachi fuqaro", fio]}
@@ -132,6 +164,7 @@ def scenario(question):
 
 def find_articles(question, doc=None):
     """1) aniq modda havolasi; 2) AI qidiruv so'rovlari + nomzodlar + AI tanlovi."""
+    question = til.to_input(question)
     ref = parse_ref(question)
     if ref:
         arts = index.article(ref[0], ref[1]) or index.article("", ref[1])
@@ -272,7 +305,26 @@ class QIn(BaseModel):
     question: str
 
 
+def search_q(question):
+    """BM25 özbekça matnda qidiradi: rus tilidagi savolni avval özbekça sörovlarga aylantiramiz."""
+    question = til.to_input(question)
+    if til.cur() == "ru" and til.has_cyr(question) and not config.MOCK:
+        try:
+            from llm import rewrite
+            return question + " " + " ".join(rewrite(question).get("sorovlar", []))
+        except Exception:
+            pass
+    return question
+
+
 def grounded_qa(question, title, sections):
+    question = til.to_input(question)
+    if til.cur() == "ru" and not config.MOCK:
+        # Foydalanuvçi ekranda rusça matnni köradi — iqtibos ham şu matndan bölişi kerak
+        tt = til.ru_many([s["sarlavha"] for s in sections] + [s["matn"] for s in sections] + [title])
+        n = len(sections)
+        sections = [{**s, "sarlavha": tt[i], "matn": tt[n + i]} for i, s in enumerate(sections)]
+        title = tt[-1]
     if config.MOCK:
         bm = BM25([tokenize(s["sarlavha"] + " " + s["matn"]) for s in sections])
         sc = bm.scores(tokenize(question))
@@ -296,7 +348,7 @@ def draft_ask(did: str, body: QIn, u=Depends(user)):
     charge(u, "qa")
     if len(secs) > 14:  # uzun hujjat: eng mos bandlarni tanlaymiz
         bm = BM25([tokenize(x["sarlavha"] + " " + x["matn"]) for x in secs])
-        sc = bm.scores(tokenize(body.question))
+        sc = bm.scores(tokenize(search_q(body.question)))
         secs = [secs[i] for i in sorted(sc, key=sc.get, reverse=True)[:12]] or secs[:12]
     return grounded_qa(body.question, d["nomi"], secs)
 
@@ -329,12 +381,13 @@ class FindIn(BaseModel):
 @app.post("/api/laws/find")
 def laws_find(body: FindIn, u=Depends(user)):
     charge(u, "find")
+    query = til.to_input(body.query)
     if config.MOCK:
-        arts = index.search(body.query, 15)
+        arts = index.search(query, 15)
     else:
         from llm import rewrite
-        rw = ai(rewrite, body.query)
-        arts = index.multi_search([body.query] + rw.get("sorovlar", []), 15, 40)
+        rw = ai(rewrite, query)
+        arts = index.multi_search([query] + rw.get("sorovlar", []), 15, 40)
     if body.type:
         arts = [a for a in arts if index.docs.get(a["doc"], {}).get("type") == body.type]
     groups = {}
@@ -374,10 +427,11 @@ def law_ask(short: str, body: QIn, u=Depends(user)):
     charge(u, "qa")
     ref = parse_ref(body.question)
     arts = index.article(short, ref[1]) if ref else []
-    arts += [a for a in index.search(body.question, 12, short) if a not in arts]
+    arts += [a for a in index.search(search_q(body.question), 12, short) if a not in arts]
     if not arts:
         return {"topildi": False, "javob": "Bu masala hujjatda mavjud emas.", "iqtiboslar": []}
-    secs = [{"id": a["id"], "sarlavha": f"{a['number']}-modda. {a['title']}", "matn": a["text"][:3000]} for a in arts[:12]]
+    lim = 100000 if til.cur() == "ru" else 3000  # ru: ekrandagi tarjima bilan bir xil matn
+    secs = [{"id": a["id"], "sarlavha": f"{a['number']}-modda. {a['title']}", "matn": a["text"][:lim]} for a in arts[:8 if lim > 3000 else 12]]
     return grounded_qa(body.question, index.docs[short]["title"], secs)
 
 
@@ -436,6 +490,7 @@ def organs(u=Depends(user)):
 @app.post("/api/organs/route")
 def organ_route(body: QIn, u=Depends(user)):
     charge(u, "route")
+    body.question = til.to_input(body.question)
     t = template_for(body.question)
     if t:
         return {"idora_id": t["idora_id"], "ariza_turi": yangi(t["turi"]), "izoh": yangi(t["izoh"]), "qadamlar": [yangi(x) for x in t["qadamlar"]],
@@ -475,6 +530,8 @@ def document(body: DocIn, u=Depends(user)):
     if len(body.holat.strip()) < 15:
         raise HTTPException(400, "Holatni batafsilroq yozing")
     charge(u, "document")
+    body.holat = til.to_input(body.holat)
+    body.javoblar = {k: til.to_input(v) if isinstance(v, str) else v for k, v in (body.javoblar or {}).items()}
     t = template_for(body.holat)
     if t:
         return fill_template(t, body.holat, body.javoblar)
@@ -508,7 +565,9 @@ def document_docx(body: DocxIn, u=Depends(user)):
     if u["tariff"] == "free" and body.saqla and store.ariza_count_month(u["id"]) >= 3:
         raise HTTPException(402, "Bepul tarifda oyiga 3 ta hujjat. Pro tarifda cheksiz.")
     from docgen import build_docx
-    data = build_docx(body.hujjat, old_script=body.eski)
+    lang = til.cur()
+    h = til.cyr_obj(body.hujjat) if lang == "uzc" else body.hujjat
+    data = build_docx(h, old_script=body.eski and lang == "uz", lang=lang)
     if body.saqla:
         store.ariza_save(u["id"], body.nomi, body.idora, body.hujjat)
     name = re.sub(r"[^A-Za-z0-9_-]+", "_", norm(body.nomi)).strip("_") or "hujjat"
@@ -528,7 +587,7 @@ class AskIn(BaseModel):
 
 
 def do_ask(u, question, chat_id):
-    question = question.strip()
+    question = til.to_input(question.strip())
     if not question:
         raise HTTPException(400, "Savol bo'sh")
     charge(u, "ask")
@@ -570,7 +629,7 @@ def _stt(upload_bytes, filename, ctype):
     if not enabled_stt():
         raise HTTPException(400, "Ovoz uçun VoiceLab kaliti kerak (.env: VOICELAB_API_KEY)")
     try:
-        text = speech_to_text(upload_bytes, filename or "ovoz.wav", ctype)
+        text = speech_to_text(upload_bytes, filename or "ovoz.wav", ctype, til.cur())
     except Exception as e:
         raise HTTPException(502, f"Nutqni tanib bölmadi: {e}")
     if not text:
@@ -582,13 +641,58 @@ def _stt(upload_bytes, filename, ctype):
 async def voice_ask(file: UploadFile = File(...), chat_id: str = Form(""), u=Depends(user)):
     charge(u, "stt")
     text = _stt(await file.read(), file.filename, file.content_type)
-    return {"transcript": yangi(text), **do_ask(u, text, int(chat_id) if chat_id.isdigit() else None)}
+    return {"transcript": text if til.cur() == "ru" else yangi(text), **do_ask(u, text, int(chat_id) if chat_id.isdigit() else None)}
 
 
 @app.post("/api/stt")
 async def stt(file: UploadFile = File(...), u=Depends(user)):
     charge(u, "stt")
-    return {"text": yangi(_stt(await file.read(), file.filename, file.content_type))}
+    t = _stt(await file.read(), file.filename, file.content_type)
+    return {"text": t if til.cur() == "ru" else yangi(t)}
+
+
+FAYL_TURLARI = {"image/jpeg", "image/png", "image/webp", "image/gif", "application/pdf"}
+
+
+@app.post("/api/fayl")
+async def fayl(file: UploadFile = File(...), question: str = Form(""), chat_id: str = Form(""), u=Depends(user)):
+    """Yuklangan hujjat (rasm yoki PDF): AI öqiydi, qonunlardan tegişli moddalarni topadi va nima qiliş kerakligini aytadi."""
+    data = await file.read()
+    mt = (file.content_type or "").lower()
+    if mt == "image/jpg":
+        mt = "image/jpeg"
+    if mt not in FAYL_TURLARI:
+        raise HTTPException(400, "Faqat rasm (JPG, PNG) yoki PDF")
+    if len(data) > 10 * 1024 * 1024:
+        raise HTTPException(400, "Fayl juda katta (10 MB gaça)")
+    if config.MOCK:
+        raise HTTPException(400, "Hujjatni tahlil qiliş uçun AI kaliti kerak (.env: ANTHROPIC_API_KEY)")
+    return await run_in_threadpool(_fayl_job, u, data, mt, til.to_input(question.strip()), int(chat_id) if chat_id.isdigit() else None)
+
+
+def _fayl_job(u, data, mt, question, chat_id):
+    import base64
+    from llm import fayl_extract, answer, select
+    charge(u, "fayl")
+    ext = ai(fayl_extract, base64.b64encode(data).decode(), mt, question)
+    if not ext.get("oqildi", True):
+        msg = ("Документ не удалось прочитать. Сфотографируйте его ровно и целиком при хорошем освещении и загрузите снова."
+               if til.cur() == "ru" else "Hujjat öqilmadi. Rasmni yoruğ joyda, tekis va töliq olib qayta yuklang.")
+        return {"tur": "fayl", "fayl": ext, "javob": msg, "topildi": False, "manbalar": [], "asos": []}
+    q = question or ext.get("savol") or "Bu hujjat böyiça nima qiliş kerak?"
+    facts = "; ".join(f"{m.get('nomi')}: {m.get('qiymat')}" for m in ext.get("malumotlar", [])[:12])
+    full_q = f"Foydalanuvçi hujjat yukladi: {ext.get('turi', '')}. {ext.get('qisqa', '')} Ma'lumotlar: {facts}. SAVOL: {q}"
+    cands = index.multi_search((ext.get("sorovlar") or []) + [q], 12, 40)
+    ids = ai(select, full_q, cands) if cands else []
+    arts = [a for a in (index.get(i) for i in ids) if a][:6] or cands[:3]
+    r = ai(answer, full_q, arts, None)
+    used = [a for a in (index.get(i) for i in r.get("manbalar", [])) if a] or (arts[:1] if r.get("topildi") else [])
+    res = {"tur": "fayl", "question": q, **r, "fayl": {k: ext.get(k) for k in ("turi", "qisqa", "malumotlar", "muammolar")},
+           "manbalar": [src(a) for a in used], "video": video_for(used)}
+    title = "📎 " + (ext.get("turi") or "Hujjat")
+    chat_id = store.chat_add(u["id"], chat_id, "user", {"text": title + (f" — {question}" if question else "")}, title=title)
+    store.chat_add(u["id"], chat_id, "ai", res)
+    return {**res, "chat_id": chat_id}
 
 
 class TTSIn(BaseModel):
@@ -601,7 +705,8 @@ def tts(body: TTSIn, u=Depends(user)):
     if not enabled_tts():
         raise HTTPException(400, "Ovoz sozlanmagan (.env: VOICELAB_API_KEY)")
     try:
-        data, mt = text_to_speech(body.text)
+        text = til.lat(body.text) if til.cur() == "uzc" and til.has_cyr(body.text) else body.text
+        data, mt = text_to_speech(text, til.cur())
     except Exception as e:
         raise HTTPException(502, f"Ovoz yaratib bölmadi: {e}")
     charge(u, "tts")  # faqat muvaffaqiyatli bo'lsa

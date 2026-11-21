@@ -55,36 +55,39 @@ def voicelab_voices(language="uz"):
     return _items(r.json())
 
 
-def voicelab_voice_id() -> str:
-    if config.VOICELAB_VOICE_ID:
+def voicelab_voice_id(lang="uz") -> str:
+    if lang == "ru" and config.VOICELAB_VOICE_ID_RU:
+        return config.VOICELAB_VOICE_ID_RU
+    if lang != "ru" and config.VOICELAB_VOICE_ID:
         return config.VOICELAB_VOICE_ID
-    if "uz" not in _voice_cache:
-        voices = voicelab_voices("uz")
+    if lang not in _voice_cache:
+        voices = voicelab_voices(lang)
         if not voices:
-            raise RuntimeError("VoiceLab: o'zbekcha ovoz topilmadi. .env ga VOICELAB_VOICE_ID yozing")
+            raise RuntimeError(f"VoiceLab: '{lang}' tili uçun ovoz topilmadi. .env ga VOICELAB_VOICE_ID{'_RU' if lang == 'ru' else ''} yozing")
         v = voices[0]
-        _voice_cache["uz"] = v.get("voice_id") or v.get("id")
-    return _voice_cache["uz"]
+        _voice_cache[lang] = v.get("voice_id") or v.get("id")
+    return _voice_cache[lang]
 
 
 # ---------------- STT ----------------
-def speech_to_text(audio: bytes, filename: str, content_type: str) -> str:
+def speech_to_text(audio: bytes, filename: str, content_type: str, lang: str = "uz") -> str:
+    vl = "ru" if lang == "ru" else "uz"
     if provider() == "voicelab":
-        return _vl_stt(audio, filename or "savol.wav", content_type or "audio/wav")
+        return _vl_stt(audio, filename or "savol.wav", content_type or "audio/wav", vl)
     r = httpx.post(f"{ELEVEN}/speech-to-text", headers={"xi-api-key": config.ELEVENLABS_API_KEY},
-                   data={"model_id": config.ELEVEN_STT_MODEL, "language_code": config.ELEVEN_LANG},
+                   data={"model_id": config.ELEVEN_STT_MODEL, "language_code": "rus" if vl == "ru" else config.ELEVEN_LANG},
                    files={"file": (filename or "savol.wav", audio, content_type or "audio/wav")}, timeout=90)
     r.raise_for_status()
     return r.json().get("text", "").strip()
 
 
-def _vl_stt(audio, filename, ctype, deadline_s=45):
+def _vl_stt(audio, filename, ctype, first="uz", deadline_s=45):
     job = None
-    for lang in ("uz", "auto"):
+    for lang in (first, "auto"):
         r = httpx.post(f"{VL}/stt", headers=_h({"Idempotency-Key": str(uuid.uuid4())}),
                        data={"language": lang, "include_speakers": "false"},
                        files={"audio": (filename, audio, ctype)}, timeout=90)
-        if r.status_code in (400, 422) and lang == "uz":
+        if r.status_code in (400, 422) and lang == first:
             continue  # "uz" kodi qabul qilinmasa, avtomatik aniqlash
         r.raise_for_status()
         job = r.json()
@@ -107,24 +110,40 @@ def _vl_stt(audio, filename, ctype, deadline_s=45):
 
 
 # ---------------- TTS ----------------
-def text_to_speech(text: str) -> tuple[bytes, str]:
-    """(audio baytlari, media turi) qaytaradi."""
-    text = eski(text)  # TTS an'anaviy yozuvni yaxshiroq o'qiydi
+def text_to_speech(text: str, lang: str = "uz") -> tuple[bytes, str]:
+    """(audio baytlari, media turi) qaytaradi. lang: uz | uzc | ru"""
+    ru = lang == "ru"
+    if not ru:
+        text = eski(text)  # TTS an'anaviy yozuvni yaxshiroq o'qiydi
     if provider() == "voicelab":
-        body = {"text": text[:5000], "language": "uz", "voice_id": voicelab_voice_id(), "speed": 1}
-        if config.VOICELAB_MODEL:
-            body["model_id"] = config.VOICELAB_MODEL
+        try:
+            return _vl_tts(text, "ru" if ru else "uz")
+        except Exception:
+            if not (ru and config.ELEVENLABS_API_KEY and config.ELEVEN_VOICE_ID):
+                raise
+    r = httpx.post(f"{ELEVEN}/text-to-speech/{config.ELEVEN_VOICE_ID}?output_format=mp3_44100_128",
+                   headers={"xi-api-key": config.ELEVENLABS_API_KEY}, json={"text": text[:2500], "model_id": config.ELEVEN_TTS_MODEL},
+                   timeout=90)
+    r.raise_for_status()
+    return r.content, "audio/mpeg"
+
+
+def _vl_tts(text, lang):
+    body = {"text": text[:5000], "language": lang, "speed": 1}
+    try:
+        body["voice_id"] = voicelab_voice_id(lang)
+    except Exception:
+        if lang != "ru":
+            raise  # ru: ovoz ID siz, standart ruscha ovoz bilan urinib köramiz
+    if config.VOICELAB_MODEL and lang == "uz":  # model sozlamasi faqat özbekça oqim uçun
+        body["model_id"] = config.VOICELAB_MODEL
+    if True:
         r = httpx.post(f"{VL}/tts", headers=_h({"Idempotency-Key": "tts-" + uuid.uuid4().hex}), json=body, timeout=120)
         if r.status_code == 200:
             return r.content, "audio/wav"
         if r.status_code == 202:
             return _vl_wait_audio(r.json()), "audio/wav"
         raise RuntimeError(f"VoiceLab TTS {r.status_code}: {r.text[:300]}")
-    r = httpx.post(f"{ELEVEN}/text-to-speech/{config.ELEVEN_VOICE_ID}?output_format=mp3_44100_128",
-                   headers={"xi-api-key": config.ELEVENLABS_API_KEY}, json={"text": text[:2500], "model_id": config.ELEVEN_TTS_MODEL},
-                   timeout=90)
-    r.raise_for_status()
-    return r.content, "audio/mpeg"
 
 
 def _vl_wait_audio(job, deadline_s=60):

@@ -6,6 +6,12 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Cm, Pt
 from alifbo import eski
 
+LABELS = {
+    "uz": {"title": "ARIZA", "ilova": "Ilovalar:", "req": "Yuqoridagilarni inobatga olib, SÖRAYMAN:", "y": "y.", "imzo": "Imzo", "arizachi": "Arizachi"},
+    "uzc": {"title": "АРИЗА", "ilova": "Иловалар:", "req": "Юқоридагиларни инобатга олиб, СЎРАЙМАН:", "y": "й.", "imzo": "Имзо", "arizachi": "Аризачи"},
+    "ru": {"title": "ЗАЯВЛЕНИЕ", "ilova": "Приложения:", "req": "Учитывая вышеизложенное, ПРОШУ:", "y": "г.", "imzo": "Подпись", "arizachi": "Заявитель"},
+}
+
 FONT = "Times New Roman"
 
 
@@ -25,12 +31,12 @@ def _p(doc, text="", *, align=None, bold=False, size=14, indent=False, before=0,
     return p
 
 
-def _ariza(doc, h, t):
+def _ariza(doc, h, t, L):
     """Namuna (bildirgi) shakli: o'ng yuqorida adresat, o'rtada sarlavha, pastda imzo qatori."""
     lines = h.get("kimga", []) + h.get("kimdan", [])
     for i, line in enumerate(lines):
         _p(doc, t(line), left=9.0, after=0, bold=True, size=14)
-    _p(doc, t(h.get("sarlavha", "ARIZA")).upper(), align=WD_ALIGN_PARAGRAPH.CENTER, bold=True, before=18, after=10)
+    _p(doc, t(h.get("sarlavha") or L["title"]).upper(), align=WD_ALIGN_PARAGRAPH.CENTER, bold=True, before=18, after=10)
     for para in h.get("matn", []):
         p = _p(doc, t(para), align=WD_ALIGN_PARAGRAPH.JUSTIFY, indent=True, after=2)
         p.paragraph_format.line_spacing = 1.0
@@ -39,11 +45,11 @@ def _ariza(doc, h, t):
         _p(doc, f"{i}. {t(item)}", align=WD_ALIGN_PARAGRAPH.JUSTIFY, indent=True, after=2)
     ilova = h.get("ilovalar") or []
     if ilova:
-        _p(doc, t("Ilovalar:"), bold=True, before=8, after=2)
+        _p(doc, t(L["ilova"]), bold=True, before=8, after=2)
         for i, item in enumerate(ilova, 1):
             _p(doc, f"{i}. {t(item)}", after=0, left=0.6)
     _p(doc, "", after=18)
-    imzo = h.get("imzo") or ["Arizachi", ""]
+    imzo = h.get("imzo") or [L["arizachi"], ""]
     tbl = doc.add_table(rows=1, cols=2)
     c1, c2 = tbl.rows[0].cells
     c1.width, c2.width = Cm(8.25), Cm(8.25)
@@ -54,9 +60,10 @@ def _ariza(doc, h, t):
     r.bold, r.font.name, r.font.size = True, FONT, Pt(14)
 
 
-def build_docx(h: dict, old_script: bool = False) -> bytes:
-    """h: {kimga[], kimdan[], sarlavha, matn[], soraymiz[], ilovalar[]}"""
-    t = eski if old_script else (lambda s: s)
+def build_docx(h: dict, old_script: bool = False, lang: str = "uz") -> bytes:
+    """h: {kimga[], kimdan[], sarlavha, matn[], soraymiz[], ilovalar[]}; lang: uz | uzc | ru"""
+    L = LABELS.get(lang, LABELS["uz"])
+    t = eski if old_script and lang == "uz" else (lambda s: s)
     doc = Document()
     sec = doc.sections[0]
     sec.page_height, sec.page_width = Cm(29.7), Cm(21.0)
@@ -65,7 +72,7 @@ def build_docx(h: dict, old_script: bool = False) -> bytes:
     st = doc.styles["Normal"]
     st.font.name, st.font.size = FONT, Pt(14)
     if h.get("uslub") == "ariza":
-        _ariza(doc, h, t)
+        _ariza(doc, h, t, L)
         buf = io.BytesIO()
         doc.save(buf)
         return buf.getvalue()
@@ -76,19 +83,19 @@ def build_docx(h: dict, old_script: bool = False) -> bytes:
     for line in h.get("kimdan", []):
         _p(doc, t(line), left=9.0, after=0)
 
-    _p(doc, t(h.get("sarlavha", "ARIZA")).upper(), align=WD_ALIGN_PARAGRAPH.CENTER, bold=True, before=24, after=14)
+    _p(doc, t(h.get("sarlavha") or L["title"]).upper(), align=WD_ALIGN_PARAGRAPH.CENTER, bold=True, before=24, after=14)
     for para in h.get("matn", []):
         _p(doc, t(para), align=WD_ALIGN_PARAGRAPH.JUSTIFY, indent=True)
 
     req = h.get("soraymiz") or h.get("soraymiz") or []
     if req:
-        _p(doc, t("Yuqoridagilarni inobatga olib, SÖRAYMAN:"), align=WD_ALIGN_PARAGRAPH.CENTER, bold=True, before=10, after=6)
+        _p(doc, t(L["req"]), align=WD_ALIGN_PARAGRAPH.CENTER, bold=True, before=10, after=6)
         for i, item in enumerate(req, 1):
             _p(doc, f"{i}. {t(item)}", align=WD_ALIGN_PARAGRAPH.JUSTIFY, indent=True)
 
     ilova = h.get("ilovalar") or []
     if ilova:
-        _p(doc, t("Ilovalar:"), bold=True, before=10, after=2)
+        _p(doc, t(L["ilova"]), bold=True, before=10, after=2)
         for i, item in enumerate(ilova, 1):
             _p(doc, f"{i}. {t(item)}", after=0, left=0.6)
 
@@ -96,10 +103,10 @@ def build_docx(h: dict, old_script: bool = False) -> bytes:
     tbl.autofit = True
     c1, c2 = tbl.rows[0].cells
     c1.width, c2.width = Cm(8.25), Cm(8.25)
-    r = c1.paragraphs[0].add_run(f"«____» ____________ {date.today().year} y.")
+    r = c1.paragraphs[0].add_run(f"«____» ____________ {date.today().year} {L['y']}")
     r.font.name, r.font.size = FONT, Pt(14)
     c2.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    r = c2.paragraphs[0].add_run(t("Imzo: ______________"))
+    r = c2.paragraphs[0].add_run(t(L["imzo"] + ": ______________"))
     r.font.name, r.font.size = FONT, Pt(14)
     doc.paragraphs[-1].paragraph_format.space_after = Pt(24)
 

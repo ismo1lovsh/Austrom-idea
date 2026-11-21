@@ -24,7 +24,17 @@ CODE_NAMES = [
     ("UJK", r"uy[\s-]*joy\s+kodeks"),
     ("YK", r"yer\s+kodeks"),
     ("KONST", r"konstitutsiya"),
+    # rus tilidagi nomlar (kirill -> lotin norm() dan keyin)
+    ("JPK", r"ugolovno[\s-]*protsessual"),
+    ("FPK", r"grajdansk\w*[\s-]*protsessual"),
+    ("MJTK", r"administrativn\w*\s+otvetstvennost|koao"),
+    ("JK", r"ugolovn\w*\s+kodeks"),
+    ("FK", r"grajdansk\w*\s+kodeks"),
+    ("MK", r"trudov\w*\s+kodeks"),
+    ("OK", r"semeyn\w*\s+kodeks"),
+    ("SK", r"nalogov\w*\s+kodeks"),
 ]
+RU_ABBR = {"uk": "JK", "upk": "JPK", "gpk": "FPK", "gk": "FK", "tk": "MK", "nk": "SK", "koao": "MJTK"}
 ABBR = {"jk", "mjtk", "fk", "fpk", "jpk", "mk", "ok", "sk", "mspk", "jik", "ujk", "yk"}
 
 
@@ -32,7 +42,7 @@ def norm(text: str) -> str:
     t = text.lower()
     t = t.replace("ş", "sh").replace("ç", "ch").replace("ö", "o").replace("ğ", "g")
     t = re.sub(r"[ʻʼ‘’`´']", "", t)
-    cyr = {"а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ё":"yo","ж":"j","з":"z","и":"i","й":"y","к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f","х":"x","ц":"ts","ч":"ch","ш":"sh","ъ":"","ь":"","э":"e","ю":"yu","я":"ya","ў":"o","қ":"q","ғ":"g","ҳ":"h"}
+    cyr = {"а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ё":"yo","ж":"j","з":"z","и":"i","й":"y","к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f","х":"x","ц":"ts","ч":"ch","ш":"sh","ъ":"","ь":"","э":"e","ю":"yu","я":"ya","ў":"o","қ":"q","ғ":"g","ҳ":"h","ы":"i","щ":"sh"}
     return "".join(cyr.get(c, c) for c in t)
 
 
@@ -99,6 +109,8 @@ def detect_code(text_norm: str) -> str:
     for w in re.findall(r"[a-z]+", text_norm):
         if w in ABBR:
             return w.upper()
+        if w in RU_ABBR:
+            return RU_ABBR[w]
     return ""
 
 
@@ -106,9 +118,15 @@ REF = re.compile(r"(\d+(?:-\d+)?)\s*-?\s*(?:chi\s+|inchi\s+|nchi\s+)?modda")
 REF2 = re.compile(r"modda\w*\s*(?:raqami\s*)?(\d+(?:-\d+)?)")
 
 
+RU_REF = re.compile(r"(?:\bstat(?:ya|yu|i|ye|e|yam|yax|yey)\b|\bst\.)\s*(?:n|№)?\s*(\d+(?:-\d+)?)|(\d+(?:-\d+)?)\s*-?\s*(?:ya|aya|oy)?\s*stat(?:ya|yu|i|ye|e)\b")
+
+
 def parse_ref(text: str):
     """(kod, raqam) yoki None."""
     t = words_to_digits(norm(text))
+    rm = RU_REF.search(t)
+    if rm:
+        return detect_code(t), rm.group(1) or rm.group(2)
     m = REF.search(t) or REF2.search(t)
     if not m:
         m2 = re.search(r"\b(" + "|".join(sorted(ABBR, key=len, reverse=True)) + r")\s*(\d+(?:-\d+)?)\b", t)

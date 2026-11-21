@@ -303,3 +303,20 @@ textarea{min-height:110px;resize:vertical}
 html{-webkit-tap-highlight-color:transparent}
 body{overscroll-behavior-y:none}
 .install .note{color:inherit;opacity:.8}
+
+/* til tanlash */
+.langs{display:flex;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:4px;align-self:flex-start}
+.langs button{border:0;background:transparent;color:#E6F3F3;font:600 13px Inter,sans-serif;padding:7px 12px;border-radius:999px;cursor:pointer}
+.langs button.on{background:#fff;color:#0F5F66}
+
+/* hujjatni tekshirish */
+.mini.filecta{background:linear-gradient(135deg,#0F5F66,#0B3A3F);color:#fff;border:0}
+.mini.filecta .note{color:#BFD8D5}
+.mini.filecta .ic{width:42px;height:42px;border-radius:12px;background:rgba(242,177,52,.2);color:#F2B134;display:grid;place-items:center;flex:none}
+.fthumb{width:100%;max-height:260px;object-fit:contain;border-radius:16px;background:#EEF3F3}
+.facts{display:grid;gap:6px}
+.facts div{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:10px;background:#F4F7F7;font-size:14px}
+.facts span{color:var(--mute)}
+.facts b{text-align:right}
+h4.fh{margin:6px 0 0;font-size:14px}
+label.btn{cursor:pointer}

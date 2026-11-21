@@ -12,6 +12,7 @@ CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-haiku-5-5")
 # VoiceLab (asosiy ovoz provayderi) — https://docs.voicelab.uz
 VOICELAB_API_KEY = os.getenv("VOICELAB_API_KEY", "").strip()
 VOICELAB_VOICE_ID = os.getenv("VOICELAB_VOICE_ID", "").strip()   # bo'sh bo'lsa, birinchi o'zbekcha ovoz tanlanadi
+VOICELAB_VOICE_ID_RU = os.getenv("VOICELAB_VOICE_ID_RU", "").strip()  # rus tili ovozi; bo'sh bo'lsa, VoiceLab'dagi birinchi ruscha ovoz
 VOICELAB_BASE = os.getenv("VOICELAB_BASE", "https://api.voicelab.uz")
 VOICELAB_MODEL = os.getenv("VOICELAB_MODEL", "").strip()         # bo'sh = standart model (lison)
 
@@ -46,4 +47,4 @@ TARIFFS = {
                                  "Ustuvor (tezkor) javob", "Advokat bilan bog'lanish (demo)", "Oila uçun 3 ta akkaunt"]},
 }
 CREDIT_PACKS = [{"id": "s", "kredit": 50, "narx": 9900}, {"id": "m", "kredit": 200, "narx": 29900}, {"id": "l", "kredit": 500, "narx": 59900}]
-COST = {"ask": 2, "article": 2, "video": 3, "document": 4, "find": 1, "route": 1, "qa": 2, "stt": 1, "tts": 1, "procedure": 2}
+COST = {"ask": 2, "article": 2, "video": 3, "document": 4, "find": 1, "route": 1, "qa": 2, "stt": 1, "tts": 1, "procedure": 2, "fayl": 4}

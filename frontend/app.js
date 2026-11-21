@@ -4,6 +4,7 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const mark = (s) => esc(s).replace(/\[([^\]]+)\]/g, "<mark>[$1]</mark>");
 const ls = { get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} } };
+const I = window.I18N, L = I.L;
 const S = { token: ls.get("hq_token"), status: {}, chatId: null, form: null, hl: null, rtab: "h", organs: null, voiceOn: true,
   autoVoice: ls.get("hq_autovoice") !== "0", voiceNext: false };
 
@@ -29,7 +30,7 @@ const P = {
   logout: "M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10", card: "M3 6h18v12H3zM3 10h18", star: "M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z",
   sound: "M4 9h4l5-4v14l-5-4H4zM17 9a4 4 0 0 1 0 6", mute: "M4 9h4l5-4v14l-5-4H4zM17 9l4 6M21 9l-4 6",
   video: "M3 6h13v12H3zM16 10l5-3v10l-5-3", spark: "M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6",
-  kodeks: "M5 3h11l3 3v15H5zM9 8h6M9 12h6M9 16h4", qaror: "M6 3h12v18l-6-4-6 4z", konst: "M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z",
+  kodeks: "M5 3h11l3 3v15H5zM9 8h6M9 12h6M9 16h4", scan: "M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 9h8M8 12h8M8 15h5", camera: "M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z", globe: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z", qaror: "M6 3h12v18l-6-4-6 4z", konst: "M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z",
 };
 const MARK = (s = 34, bg = "#0F5F66") => `<svg width="${s}" height="${s}" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="${bg}"/><path d="M38 30V90" stroke="#fff" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M38 30H57C77 30 90 43 90 60C90 77 77 90 57 90H38" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><g stroke="#9FD3D6" stroke-width="5" stroke-linecap="round"><path d="M51 51H70"/><path d="M51 61H75"/><path d="M51 71H65"/></g><path d="M93 13L96.5 23.5L107 27L96.5 30.5L93 41L89.5 30.5L79 27L89.5 23.5Z" fill="#F2B134"/></svg>`;
 const CHOL_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="cholsvg" aria-hidden="true"> <defs> <radialGradient id="gBg" cx="40%" cy="30%" r="80%"><stop offset="0" stop-color="#23949C"/><stop offset=".55" stop-color="#0F5F66"/><stop offset="1" stop-color="#07363B"/></radialGradient> <radialGradient id="gSkin" cx="42%" cy="38%" r="70%"><stop offset="0" stop-color="#FAD9B8"/><stop offset=".6" stop-color="#EDB98D"/><stop offset="1" stop-color="#C98559"/></radialGradient> <radialGradient id="gNose" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#F7CBA4"/><stop offset="1" stop-color="#D18E62"/></radialGradient> <linearGradient id="gBeard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#E9EDF0"/><stop offset="1" stop-color="#C5CDD3"/></linearGradient> <linearGradient id="gBeardSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset=".75" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient> <radialGradient id="gDoppi" cx="38%" cy="28%" r="80%"><stop offset="0" stop-color="#4A4A4A"/><stop offset=".45" stop-color="#1C1C1C"/><stop offset="1" stop-color="#050505"/></radialGradient> <linearGradient id="gChapan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0A2C55"/><stop offset=".5" stop-color="#174A86"/><stop offset="1" stop-color="#0A2C55"/></linearGradient> <linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient> <clipPath id="clip"><circle cx="256" cy="256" r="236"/></clipPath> <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#00262A" flood-opacity=".45"/></filter> </defs> <ellipse cx="256" cy="496" rx="170" ry="12" fill="#000" opacity=".18"/> <g id="badge"><circle cx="256" cy="256" r="244" fill="#F2B134"/><circle cx="256" cy="256" r="236" fill="url(#gBg)"/></g> <g clip-path="url(#clip)"> <g id="chapan" filter="url(#soft)"> <path d="M70 520C80 430 160 392 210 384L256 446L302 384C352 392 432 430 442 520Z" fill="url(#gChapan)"/> <g stroke-width="7" opacity=".9"> <path d="M120 520C126 462 150 430 178 412" stroke="#F2B134"/><path d="M150 520C156 470 176 440 200 424" stroke="#2BB3A3"/> <path d="M392 520C386 462 362 430 334 412" stroke="#F2B134"/><path d="M362 520C356 470 336 440 312 424" stroke="#2BB3A3"/> <path d="M96 520C102 470 124 440 150 420" stroke="#C0392B"/><path d="M416 520C410 470 388 440 362 420" stroke="#C0392B"/> </g> <path d="M70 520C80 430 160 392 210 384L256 446L302 384C352 392 432 430 442 520Z" fill="url(#gShade)"/> </g> <g id="face" filter="url(#soft)"> <ellipse cx="168" cy="262" rx="17" ry="27" fill="url(#gNose)"/><ellipse cx="344" cy="262" rx="17" ry="27" fill="url(#gNose)"/> <ellipse cx="256" cy="262" rx="88" ry="100" fill="url(#gSkin)"/> <ellipse cx="226" cy="222" rx="34" ry="20" fill="#fff" opacity=".18"/> <circle cx="204" cy="272" r="17" fill="#E8826F" opacity=".35"/><circle cx="308" cy="272" r="17" fill="#E8826F" opacity=".35"/> </g> <g id="brows" class="brows"> <path d="M198 214C210 196 236 194 248 210C232 206 214 210 202 222Z" fill="#FFFFFF" stroke="#C9D1D6" stroke-width="2"/> <path d="M314 214C302 196 276 194 264 210C280 206 298 210 310 222Z" fill="#FFFFFF" stroke="#C9D1D6" stroke-width="2"/> </g> <g id="eyes" fill="none" stroke="#3B2A20" stroke-width="5.5" stroke-linecap="round"> <path d="M207 238Q223 251 239 238"/><path d="M273 238Q289 251 305 238"/> <path d="M198 244l-7 4M314 244l7 4" stroke-width="3" opacity=".6"/> </g> <g id="beard" class="jaw" filter="url(#soft)"> <path d="M168 266C164 330 186 404 222 438C232 448 244 458 256 464C268 458 280 448 290 438C326 404 348 330 344 266C334 296 306 312 292 306C282 320 268 326 256 326C244 326 230 320 220 306C206 312 178 296 168 266Z" fill="url(#gBeard)"/> <path d="M168 266C164 330 186 404 222 438C232 448 244 458 256 464C268 458 280 448 290 438C326 404 348 330 344 266C334 296 306 312 292 306C282 320 268 326 256 326C244 326 230 320 220 306C206 312 178 296 168 266Z" fill="url(#gBeardSide)"/> <g fill="none" stroke="#B9C3CA" stroke-width="3" stroke-linecap="round" opacity=".8"> <path d="M200 330C204 370 218 400 236 424"/><path d="M228 344C230 378 238 406 248 430"/><path d="M256 340V440"/> <path d="M284 344C282 378 274 406 264 430"/><path d="M312 330C308 370 294 400 276 424"/> </g> </g> <g id="mouthG"><ellipse class="mouth" cx="256" cy="316" rx="20" ry="2" fill="#4A1C14"/><ellipse class="tongue" cx="256" cy="322" rx="11" ry="0" fill="#C2564A"/></g> <path d="M256 236C243 260 238 280 256 290C274 280 269 260 256 236Z" fill="url(#gNose)"/> <ellipse cx="250" cy="270" rx="5" ry="7" fill="#fff" opacity=".35"/> <g id="mustache" filter="url(#soft)"> <path d="M256 294C236 280 204 284 186 308C210 302 232 310 256 304C280 310 302 302 326 308C308 284 276 280 256 294Z" fill="url(#gBeard)"/> </g> <g id="doppi" filter="url(#soft)"> <path d="M160 200C158 136 200 100 256 100C312 100 354 136 352 200Z" fill="url(#gDoppi)"/> <path d="M156 188Q256 170 356 188L356 210Q256 192 156 210Z" fill="#111"/> <path d="M164 198l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8l10 8l10 -8" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity=".85"/> <g fill="#FFFFFF"> <path d="M256 112C274 126 276 152 256 170C238 152 240 126 256 112Z"/> <path d="M206 128C222 136 230 160 216 178C200 166 196 142 206 128Z" opacity=".95"/> <path d="M306 128C290 136 282 160 296 178C312 166 316 142 306 128Z" opacity=".95"/> </g> <g fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"> <path d="M256 112C262 104 270 104 272 110"/><path d="M206 128C204 118 210 112 216 116"/><path d="M306 128C308 118 302 112 296 116"/> </g> <ellipse cx="222" cy="120" rx="26" ry="12" fill="#fff" opacity=".12" transform="rotate(-25 222 120)"/> </g> </g> <path id="spark" d="M392 70L401 97L428 106L401 115L392 142L383 115L356 106L383 97Z" fill="#F2B134" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/> <ellipse cx="200" cy="96" rx="120" ry="40" fill="#FFFFFF" opacity=".07" transform="rotate(-20 200 96)"/> </svg>';
@@ -50,7 +51,7 @@ const dfmt = (s) => { if (!s) return ""; const d = new Date(s); return isNaN(d) 
 const daysLeft = (s) => Math.max(0, Math.ceil((new Date(s + "T23:59:59") - new Date()) / 864e5));
 
 async function api(path, { body, form, blob, method } = {}) {
-  const h = {}; if (S.token) h.Authorization = "Bearer " + S.token;
+  const h = { "X-Lang": I.lang }; if (S.token) h.Authorization = "Bearer " + S.token;
   let opt = { method: method || (body || form ? "POST" : "GET"), headers: h };
   if (form) opt.body = form; else if (body) { h["Content-Type"] = "application/json"; opt.body = JSON.stringify(body); }
   let r;
@@ -122,7 +123,7 @@ async function sttText(wav) { const fd = new FormData(); fd.append("file", wav, 
 function top({ title, back, right = "" } = {}) {
   $("top").innerHTML = title
     ? `${back !== false ? `<a class="ib" href="${back || "#home"}" aria-label="Orqaga">${icon("back")}</a>` : ""}<span class="ttl">${esc(title)}</span>${right}`
-    : `<a class="brand" href="#home">${MARK(34)}<b>Donişmand <span class="ai">AI</span></b></a><span style="flex:1"></span>${right}`;
+    : `<a class="brand" href="#home" data-notr>${MARK(34)}<b>Donişmand <span class="ai">AI</span></b></a><span style="flex:1"></span>${right}`;
 }
 let askHandler = null;
 function ask(placeholder, handler) {
@@ -142,7 +143,7 @@ const R = [
   [/^login$/, login], [/^(home)?$/, home], [/^loyihalar$/, drafts], [/^loyiha\/(.+)$/, draft],
   [/^savod$/, savod], [/^qonunlar\/(\w+)$/, lawsList], [/^qonun\/([\w-]+)$/, law], [/^modda\/([\w-]+)\/([\w-]+)$/, article],
   [/^huquq$/, rights], [/^huquq\/(.+)$/, rightTopic], [/^ariza$/, organs], [/^idora\/(\w+)$/, organ], [/^yoz$/, writeApp],
-  [/^chat(?:\/(\d+))?$/, chat], [/^profil$/, profile], [/^tarif$/, tariffs], [/^arizalarim$/, myApps],
+  [/^chat(?:\/(\d+))?$/, chat], [/^fayl$/, faylPage], [/^profil$/, profile], [/^tarif$/, tariffs], [/^arizalarim$/, myApps],
 ];
 async function route() {
   stopVoice();
@@ -164,9 +165,10 @@ async function login() {
   $("top").innerHTML = ""; $("top").hidden = true;
   $("main").innerHTML = `<div class="login">
     <div class="big">${icon("tarozi", 300, 1.2)}</div>
+    <div class="langs" data-notr>${Object.entries(I.LANGS).map(([k, n]) => `<button class="${k === I.lang ? "on" : ""}" data-l="${k}">${n}</button>`).join("")}</div>
     <div>
       <img src="static/brand/donishmand-chol.svg" width="150" height="150" alt="" class="chol">
-      <h1 style="margin-top:14px">Donişmand <span class="ai">AI</span></h1>
+      <h1 style="margin-top:14px" data-notr>Donişmand <span class="ai">AI</span></h1>
       <p>Qonunni tuşuning, huquqingizni biling, arizangizni bir neçta daqiqada tayyorlang.</p>
       <div class="feat">
         <div><i>${icon("bell", 16)}</i>Yangi qonun loyihalari haqida xabar</div>
@@ -179,6 +181,7 @@ async function login() {
       <button class="oneid" id="oneid">${icon("politsiya", 22)} OneID orqali kiriş</button>
       <p class="note" style="color:#CFE7E8;text-align:center;margin:0">Demo: haqiqiy OneID ulaniş uçun davlat tomonidan beriladigan rasmiy kalit kerak.</p>
     </div></div>`;
+  $("main").querySelector(".langs").onclick = (e) => { const b = e.target.closest("[data-l]"); if (b) I.setLang(b.dataset.l); };
   $("oneid").onclick = () => {
     const sh = document.createElement("div"); sh.className = "sheet";
     sh.innerHTML = `<form class="box"><h2>OneID (demo kiriş)</h2><p class="sub">Haqiqiy tizimda ma'lumotlar OneID dan avtomatik olinadi.</p>
@@ -209,12 +212,13 @@ async function home() {
       <a class="tile t3" href="#huquq"><span class="ic">${icon("tarozi", 26)}</span><span><b>Huquq va majburiyatlarim</b><span>Hayotiy vaziyatlar böyiça</span></span><span class="deco">${icon("tarozi", 120, 1)}</span></a>
       <a class="tile t4" href="#ariza"><span class="ic">${icon("hujjat", 26)}</span><span><b>Ariza yuboriş</b><span>Qayerga va qanday</span></span><span class="deco">${icon("hujjat", 120, 1)}</span></a>
     </div>
+    <a class="mini filecta" href="#fayl"><span class="ic">${icon("scan", 22)}</span><span style="flex:1"><b>Hujjatni AI tekşirsin</b><br><span class="note">Rasm, PDF — jarima, qaror, şartnoma</span></span>${icon("chev", 18)}</a>
     <a class="mini" href="#profil"><span style="flex:1"><span class="row between" style="font-size:13px;margin-bottom:6px"><b>Bugungi limit</b><span class="note">${u.qoldi + u.qoshimcha} kredit qoldi</span></span>
       <span class="meter" style="display:block"><i style="width:${Math.round(100 * u.qoldi / u.kunlik_limit)}%"></i></span></span>${icon("chev", 18)}</a>
     <div class="stack"><h3>Tezkor savollar</h3><div class="chips" id="quick"></div></div>`);
   const qs = ["Meni YPX töxtatdi, hujjatlarim yonimda emas edi. Javobgarlik bormi?", "Ish beruvçi 2 oydan beri maoş bermayapti", "Jinoyat kodeksining 169-moddasi", "Sud ajrimiga qanday şikoyat beraman?"];
   $("quick").innerHTML = qs.map((q, i) => `<button class="chip" data-i="${i}">${esc(q)}</button>`).join("");
-  $("quick").onclick = (e) => { const b = e.target.closest(".chip"); if (b) { S.pendingQ = qs[b.dataset.i]; S.chatId = null; go("chat"); } };
+  $("quick").onclick = (e) => { const b = e.target.closest(".chip"); if (b) { S.pendingQ = L(qs[b.dataset.i]); S.chatId = null; go("chat"); } };
 }
 
 /* ---------------- 1. Yangi qonun loyihalari ---------------- */
@@ -376,7 +380,7 @@ async function rightTopic(id) {
     v.querySelector("[data-a=vid]")?.addEventListener("click", () => playMp4(t.video));
     v.querySelector("[data-a=ai]").onclick = async () => {
       const out = $("aiOut"); out.innerHTML = loading();
-      try { const r = await api("ask", { body: { question: t.id === "bojxona" ? "Aeroport orqali çet eldan qança miqdorda narsa bojsiz olib kirsa böladi, norma qança?" : `${t.sorov}. ${ob ? "Fuqaroning majburiyatlari" : "Fuqaroning huquqlari"} qanday? Faqat qonundan javob ber.` } }); out.innerHTML = answerHTML(r); bindAnswer(out, r); }
+      try { const r = await api("ask", { body: { question: t.id === "bojxona" ? (I.lang === "ru" ? "Сколько товаров можно беспошлинно ввезти через аэропорт, какая норма?" : "Aeroport orqali çet eldan qança miqdorda narsa bojsiz olib kirsa böladi, norma qança?") : `${t.sorov}. ${ob ? "Fuqaroning majburiyatlari" : "Fuqaroning huquqlari"} qanday? Faqat qonundan javob ber.` } }); out.innerHTML = answerHTML(r); bindAnswer(out, r); }
       catch (e) { out.innerHTML = errBox(e); }
     };
   };
@@ -406,7 +410,7 @@ async function routeProblem(q) {
       ${(r.qadamlar || []).length ? `<ol class="stack" style="margin:0;padding-left:20px;font-size:14px;gap:4px">${r.qadamlar.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>` : ""}
       <div class="row"><button class="btn acc" data-a="yoz">Arizani tayyorlaş</button><a class="btn ghost" href="#idora/${o.id}">Idora sahifasi</a></div></div>`;
     out.querySelector("[data-a=yoz]").onclick = () => { S.form = { idora: o.nomi, idoraId: o.id, turi: r.ariza_turi, holat: q, mode: "ai" }; go("yoz"); };
-    if (S.voiceNext) { S.voiceNext = false; autoSpeak(`${o.nomi}ga murojaat qiling. ${r.ariza_turi}. ${r.izoh || ""}`, out.firstElementChild); }
+    if (S.voiceNext) { S.voiceNext = false; autoSpeak(I.lang === "ru" ? `Обратитесь в: ${o.nomi}. ${r.ariza_turi}. ${r.izoh || ""}` : `${o.nomi}ga murojaat qiling. ${r.ariza_turi}. ${r.izoh || ""}`, out.firstElementChild); }
   } catch (e) { out.innerHTML = errBox(e); }
 }
 async function organ(id) {
@@ -449,8 +453,10 @@ function writeApp() {
       <button class="btn acc">Körib çiqiş</button></form>`;
     $("qf").onsubmit = (e) => {
       e.preventDefault(); const f = Object.fromEntries(new FormData(e.target)); const lines = (s) => (s || "").split("\n").map((x) => x.trim()).filter(Boolean);
-      S.doc = { turi: F.turi || "Ariza", idora: f.kimga, kanal: "", nega: "", hujjat: { kimga: [f.kimga, "rahbariga"], kimdan: ["Arizaçi: " + f.fio, "Manzil: " + f.manzil, f.tel ? "Tel: " + f.tel : ""].filter(Boolean),
-        sarlavha: (F.turi || "Ariza").toUpperCase(), matn: lines(f.mazmun), soraymiz: lines(f.talab), ilovalar: lines(f.ilova) } };
+      const ru = I.lang === "ru";
+      S.doc = { turi: F.turi || L("Ariza"), idora: f.kimga, kanal: "", nega: "", hujjat: { kimga: ru ? ["Руководителю", f.kimga] : [f.kimga, "rahbariga"],
+        kimdan: [(ru ? "Заявитель: " : "Arizaçi: ") + f.fio, (ru ? "Адрес: " : "Manzil: ") + f.manzil, f.tel ? (ru ? "Тел.: " : "Tel: ") + f.tel : ""].filter(Boolean),
+        sarlavha: (F.turi || (ru ? "Заявление" : "Ariza")).toUpperCase(), matn: lines(f.mazmun), soraymiz: lines(f.talab), ilovalar: lines(f.ilova) } };
       preview();
     };
   }
@@ -496,7 +502,7 @@ function preview(head = "") {
   $("docOut").innerHTML = head + WARN + paperHTML(r.hujjat) + `<div class="card">
     ${r.kanal || o ? `<div class="info"><b>Qanday topşiriladi</b>${esc(r.kanal || o.kanal)}${o ? ` — <a href="${esc(o.url)}">${esc(o.url.replace("https://", ""))}</a>` : ""}</div>` : ""}
     <p class="note" style="margin:0">Sariq [qavs] lardagi joylarni töldiring. Topşirişdan oldin tekşirib çiqing.</p>
-    <label class="check"><input type="checkbox" id="old"> Eski yozuvda (o', g', sh, ch)</label>
+    ${I.lang === "uz" ? `<label class="check"><input type="checkbox" id="old"> Eski yozuvda (o', g', sh, ch)</label>` : ""}
     <button class="btn acc block" id="dl">Tasdiqlayman — Word yuklab oliş</button></div>`;
   $("docOut").querySelector(".paper").scrollIntoView({ behavior: "smooth", block: "start" });
   $("dl").onclick = () => downloadDoc(r.hujjat, r.turi, r.idora || F.idora, true);
@@ -572,9 +578,25 @@ async function openHistory() {
     $("hl").innerHTML = list.map((c) => `<div class="hist" data-c="${c.id}"><span>${esc(c.title)}</span><small>${dfmt(c.updated)}</small><button class="ib" style="width:34px;height:34px" data-del="${c.id}" aria-label="Öçiriş">${icon("trash", 16)}</button></div>`).join("") || `<div class="empty">Hali suhbat yöq</div>`;
   } catch (e) { $("hl").innerHTML = errBox(e); }
 }
+function faylHTML(r) {
+  const f = r.fayl || {};
+  return `<div class="card ans">${WARN}
+    <div class="tiles"><div class="tl"><small>Hujjat turi</small><b>${esc(f.turi || "—")}</b></div></div>
+    ${f.qisqa ? `<p>${esc(f.qisqa)}</p>` : ""}
+    ${(f.malumotlar || []).length ? `<h4 class="fh">Asosiy ma'lumotlar</h4><div class="facts">${f.malumotlar.map((m) => `<div><span>${esc(m.nomi)}</span><b>${esc(m.qiymat)}</b></div>`).join("")}</div>` : ""}
+    ${(f.muammolar || []).length ? `<div class="info warn"><b>Muammolar va xatolar</b><ul style="margin:4px 0 0;padding-left:18px">${f.muammolar.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
+    <h4 class="fh">Nima qiliş kerak</h4>
+    ${r.sarlavha || r.asosiy_raqam ? `<div class="tiles"><div class="tl"><small>Masala</small><b>${esc(r.sarlavha || "—")}</b></div>${r.asosiy_raqam ? `<div class="tl red"><small>Asosiy</small><b>${esc(r.asosiy_raqam)}</b></div>` : ""}</div>` : ""}
+    <p>${esc(r.javob || "")}</p>
+    ${r.mediatsiya ? `<div class="info med"><b>Sudsiz yöl: mediatsiya</b>${esc(r.mediatsiya)}</div>` : ""}
+    ${asosHTML(r.asos)}<div class="srcs">${r.asos ? "" : srcLinks(r.manbalar)}</div>
+    <div class="row"><button class="btn acc" data-a="ariza">Şikoyat tayyorlaş</button>${(r.manbalar || []).length ? `<button class="btn ghost" data-a="open">Moddani oçiş</button>` : ""}
+      <button class="btn ghost" data-a="where">Qayerga murojaat?</button>${canTTS() ? `<button class="btn line" data-a="tts">Tingla</button>` : ""}</div></div>`;
+}
 function answerHTML(r) {
+  if (r.tur === "fayl") return faylHTML(r);
   if (r.tur === "modda") return `<div class="stack">${WARN}${explainHTML(r)}<div class="srcs">${srcLinks(r.manbalar)}</div>
-    <div class="row"><button class="btn acc" data-a="open">Moddani oçiş</button><button class="btn" data-a="video">${icon("video", 18)} Video</button>${S.status.tts ? `<button class="btn line" data-a="tts">Tingla</button>` : ""}</div></div>`;
+    <div class="row"><button class="btn acc" data-a="open">Moddani oçiş</button><button class="btn" data-a="video">${icon("video", 18)} Video</button>${canTTS() ? `<button class="btn line" data-a="tts">Tingla</button>` : ""}</div></div>`;
   return `<div class="card ans">${WARN}
     ${r.sarlavha || r.asosiy_raqam ? `<div class="tiles"><div class="tl"><small>Masala</small><b>${esc(r.sarlavha || "—")}</b></div>${r.asosiy_raqam ? `<div class="tl red"><small>Asosiy</small><b>${esc(r.asosiy_raqam)}</b></div>` : ""}</div>` : ""}
     <p>${esc(r.javob)}</p>
@@ -582,7 +604,7 @@ function answerHTML(r) {
     ${asosHTML(r.asos)}<div class="srcs">${r.asos ? "" : srcLinks(r.manbalar)}</div>
     <div class="row">${r.video ? `<button class="btn" data-a="video">${icon("video", 18)} Video</button>` : ""}${(r.manbalar || []).length ? `<button class="btn acc" data-a="open">Moddani oçiş</button>` : ""}
       <button class="btn ghost" data-a="ariza">Ariza tayyorlaş</button><button class="btn ghost" data-a="where">Qayerga murojaat?</button>
-      ${!r.video && (r.manbalar || []).length ? `<button class="btn ghost" data-a="video">Video</button>` : ""}${S.status.tts ? `<button class="btn line" data-a="tts">Tingla</button>` : ""}</div></div>`;
+      ${!r.video && (r.manbalar || []).length ? `<button class="btn ghost" data-a="video">Video</button>` : ""}${canTTS() ? `<button class="btn line" data-a="tts">Tingla</button>` : ""}</div></div>`;
 }
 const srcLinks = (m) => (m || []).map((s) => `<a href="#modda/${esc(s.doc)}/${esc(s.number)}">${esc(s.kod)} ${esc(s.number)}-modda</a>`).join("");
 function bindAnswer(el, r) {
@@ -592,7 +614,7 @@ function bindAnswer(el, r) {
     const a = b.dataset.a;
     if (a === "open" && m) go(`modda/${m.doc}/${m.number}`);
     if (a === "video" && m) { if (r.video) playMp4(r.video); else makeVideo(m.doc, m.number, b); }
-    if (a === "ariza") { S.form = { idora: "", turi: "", holat: r.question || "", mode: "ai" }; go("yoz"); }
+    if (a === "ariza") { const f = r.fayl; S.form = { idora: "", turi: "", holat: f ? `${f.turi}. ${f.qisqa || ""} ${(f.muammolar || []).join(" ")}`.trim() : r.question || "", mode: "ai" }; go("yoz"); }
     if (a === "where") { go("ariza"); setTimeout(() => routeProblem(r.question || r.sarlavha), 300); }
     if (a === "tts") speak(r.javob || [r.umumiy, ...(r.bandlar || []).map((x) => x.nomi + ". " + x.sodda + " " + (x.oqibat || ""))].join(" "), b);
   };
@@ -601,7 +623,18 @@ function speechText(r) {
   if (r.tur === "modda") return [r.sarlavha, r.umumiy, ...(r.bandlar || []).map((b) => `${b.nomi}. ${b.sodda}${b.oqibat ? " " + b.oqibat : ""}`)].join(". ");
   return r.javob || "";
 }
-function stopVoice() { lipStop(); if (AUD) { AUD.pause(); AUD = null; } document.querySelectorAll(".speaking").forEach((x) => x.remove()); }
+function stopVoice() { lipStop(); if (AUD) { AUD.pause(); AUD = null; } try { if (BSAY) { BSAY.paused = true; speechSynthesis.cancel(); BSAY = null; } } catch (e) {} document.querySelectorAll(".speaking").forEach((x) => x.remove()); }
+/* ---- brauzer ovozi (rus tili uçun zaxira: VoiceLab ruscha ovoz bermasa) ---- */
+let BSAY = null;
+const canBrowserSay = () => I.lang === "ru" && "speechSynthesis" in window;
+const canTTS = () => S.status.tts || canBrowserSay();
+function browserSay(text, onStart, onEnd) {
+  const u = new SpeechSynthesisUtterance(text.slice(0, 3000)); u.lang = "ru-RU"; u.rate = 1;
+  const v = speechSynthesis.getVoices().find((x) => /^ru/i.test(x.lang)); if (v) u.voice = v;
+  const fake = { paused: false }; BSAY = fake;
+  u.onstart = () => onStart && onStart(fake); u.onend = u.onerror = () => { fake.paused = true; onEnd && onEnd(); };
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+}
 /* ---- lab harakati: ovoz balandligiga qarab og'iz ochiladi ---- */
 let LIP = null, ACTX = null;
 function lipStop() { if (LIP) { cancelAnimationFrame(LIP.raf); LIP = null; } }
@@ -631,11 +664,14 @@ function lipSync(audio, svg) {
 }
 /** Javobni avtomatik ovoz chiqarib o'qiydi (ovozli savolga ovozli javob). */
 async function autoSpeak(text, el) {
-  if (!S.status.tts || !S.autoVoice || !text) return;
+  if (!canTTS() || !S.autoVoice || !text) return;
   stopVoice();
   const ind = document.createElement("div"); ind.className = "speaking";
   ind.innerHTML = `<span class="talker">${CHOL_SVG}</span><span class="sp"><b>Donişmand bobo</b><span class="st">Ovoz tayyorlanmoqda…</span><span class="wave"><i></i><i></i><i></i><i></i></span></span><button type="button" class="btn line" style="min-height:36px;padding:0 12px">Töxtatiş</button>`;
   el.prepend(ind); ind.querySelector("button").onclick = stopVoice;
+  const viaBrowser = () => browserSay(text, (fake) => { ind.querySelector(".st").textContent = "gapirmoqda…"; ind.classList.add("on"); lipSync(fake, ind.querySelector(".talker svg")); },
+    () => { lipStop(); ind.classList.remove("on"); ind.querySelector(".st").textContent = "javob berdi"; setTimeout(() => ind.remove(), 1800); });
+  if (!S.status.tts) return viaBrowser();
   try {
     const b = await api("tts", { body: { text: text.slice(0, 2400) }, blob: true });
     if (!ind.isConnected) return;
@@ -644,12 +680,13 @@ async function autoSpeak(text, el) {
     AUD.onended = () => { lipStop(); ind.classList.remove("on"); ind.querySelector(".st").textContent = "javob berdi"; setTimeout(() => ind.remove(), 1800); };
     await AUD.play();
     lipSync(AUD, ind.querySelector(".talker svg"));
-  } catch (e) { ind.remove(); if (e.code !== 402) toast("Ovozli javob: " + e.message); }
+  } catch (e) { if (canBrowserSay() && e.code !== 402) return viaBrowser(); ind.remove(); if (e.code !== 402) toast("Ovozli javob: " + e.message); }
 }
 let AUD;
 async function speak(text, btn) {
+  if (!S.status.tts && canBrowserSay()) return browserSay(text);
   try { btn.disabled = true; const t = btn.textContent; btn.textContent = "…"; const b = await api("tts", { body: { text }, blob: true }); AUD?.pause(); AUD = new Audio(URL.createObjectURL(b)); await AUD.play(); btn.textContent = t; }
-  catch (e) { toast(e.message); }
+  catch (e) { if (canBrowserSay()) browserSay(text); else toast(e.message); }
   btn.disabled = false;
 }
 
@@ -725,6 +762,48 @@ function playScenes(s) {
   show(0); tick();
 }
 
+/* ---------------- Hujjatni tekshirish (rasm / PDF) ---------------- */
+async function shrinkImage(file) {
+  if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < 1.5e6) return file;
+  try {
+    const bmp = await createImageBitmap(file), k = Math.min(1, 2000 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    return await new Promise((res) => c.toBlob((b) => res(b ? new File([b], "hujjat.jpg", { type: "image/jpeg" }) : file), "image/jpeg", 0.86));
+  } catch (e) { return file; }
+}
+function faylPage() {
+  top({ title: "Hujjatni tekşiriş" });
+  const v = view(`<div class="info"><b>Rasm yoki PDF yuklang</b>Jarima qarori, sud qarori, şartnoma yoki boşqa hujjatni yuklang — AI uni tahlil qilib, nima qiliş kerakligini aytadi.</div>
+    <div class="row"><label class="btn acc" style="flex:1">${icon("hujjat", 18)} Fayl tanlash<input type="file" id="ff" accept="image/*,application/pdf" hidden></label>
+      <label class="btn" style="flex:1">${icon("camera", 18)} Rasmga olish<input type="file" id="fc" accept="image/*" capture="environment" hidden></label></div>
+    <div id="fprev"></div><div id="fOut" class="stack"></div>`);
+  let file = null;
+  const run = async (q = "") => {
+    if (!file) return toast(L("Rasm yoki PDF yuklang"));
+    const out = $("fOut");
+    out.innerHTML = `<div class="card"><div class="row" style="flex-wrap:nowrap"><div class="typing"><i></i><i></i><i></i></div><span class="note">Hujjat tahlil qilinmoqda…</span></div></div>`;
+    out.scrollIntoView({ behavior: "smooth", block: "start" });
+    try {
+      const fd = new FormData(); fd.append("file", file, file.name || "hujjat"); fd.append("question", q); fd.append("chat_id", S.fileChat || "");
+      const r = await api("fayl", { form: fd }); S.fileChat = r.chat_id;
+      out.innerHTML = (q ? `<div class="msg-me">${esc(q)}</div>` : "") + `<div data-r>${faylHTML(r)}</div>`;
+      bindAnswer(out.querySelector("[data-r]"), r);
+      if (S.voiceNext) { S.voiceNext = false; autoSpeak(r.javob, out.querySelector("[data-r]")); }
+    } catch (e) { out.innerHTML = errBox(e); }
+  };
+  const pick = async (inp) => {
+    const f0 = inp.files[0]; inp.value = ""; if (!f0) return;
+    if (!/^image\/|application\/pdf/.test(f0.type)) return toast(L("Faqat rasm (JPG, PNG) yoki PDF"));
+    file = await shrinkImage(f0); S.fileChat = null;
+    if (file.size > 10 * 1024 * 1024) { file = null; return toast(L("Fayl juda katta (10 MB gaça)")); }
+    $("fprev").innerHTML = /^image\//.test(file.type) ? `<img class="fthumb" src="${URL.createObjectURL(file)}" alt="">` : `<div class="card row" style="flex-wrap:nowrap">${icon("hujjat", 26)}<b data-notr>${esc(f0.name)}</b></div>`;
+    run();
+  };
+  $("ff").onchange = () => pick($("ff")); $("fc").onchange = () => pick($("fc"));
+  ask("Faylga savol bering…", (q) => run(q));
+}
+
 /* ---------------- Profil ---------------- */
 function donut(u) {
   const tot = u.kunlik_limit + u.qoshimcha, r = 52, c = 2 * Math.PI * r;
@@ -752,13 +831,22 @@ async function profile() {
     <div class="list">
       <a class="item" href="#arizalarim"><span class="ic">${icon("hujjat", 20)}</span><span><b>Mening arizalarim</b><small>Tayyorlangan hujjatlar</small></span><span class="chev">${icon("chev", 18)}</span></a>
       <button class="item" data-a="hist"><span class="ic">${icon("history", 20)}</span><span><b>Suhbatlar tarixi</b><small>AI bilan oldingi suhbatlar</small></span><span class="chev">${icon("chev", 18)}</span></button>
+      <button class="item" data-a="lang"><span class="ic">${icon("globe", 20)}</span><span><b>Til</b><small data-notr>${I.LANGS[I.lang]}</small></span><span class="chev">${icon("chev", 18)}</span></button>
       <button class="item" data-a="out"><span class="ic" style="background:var(--red-soft);color:var(--red)">${icon("logout", 20)}</span><span><b>Çiqiş</b></span></button></div>`);
   v.onclick = async (e) => {
     const a = e.target.closest("[data-a]")?.dataset.a;
     if (a === "buy") buyCredits();
     if (a === "hist") openHistory();
+    if (a === "lang") langSheet();
     if (a === "out") { try { await api("auth/logout", { method: "POST" }); } catch (er) {} S.token = null; ls.set("hq_token", null); go("login"); }
   };
+}
+function langSheet() {
+  const sh = document.createElement("div"); sh.className = "sheet";
+  sh.innerHTML = `<div class="box"><h2>Ilova tili</h2><div class="list" data-notr>${Object.entries(I.LANGS).map(([k, n]) => `<button class="item" data-l="${k}"><span><b>${n}</b></span>${k === I.lang ? `<span class="chev" style="color:var(--accent)">${icon("togri", 20)}</span>` : ""}</button>`).join("")}</div>
+    <button class="btn ghost block" data-x>Yopiş</button></div>`;
+  document.body.appendChild(sh);
+  sh.onclick = (e) => { if (e.target === sh || e.target.closest("[data-x]")) return sh.remove(); const b = e.target.closest("[data-l]"); if (b) I.setLang(b.dataset.l); };
 }
 async function buyCredits() {
   const t = await api("tariffs");
@@ -803,7 +891,7 @@ async function myApps() {
     || `<div class="empty">Hali ariza yöq. «Ariza yuboriş» bölimida tayyorlang.</div>`}</div><div id="one" class="stack"></div>`);
   v.querySelector(".list").onclick = (e) => {
     const b = e.target.closest("[data-i]"); if (!b) return; const a = list[b.dataset.i];
-    $("one").innerHTML = paperHTML(a.hujjat) + `<label class="check"><input type="checkbox" id="old"> Eski yozuvda</label><button class="btn acc block" id="re">Word yuklab oliş</button>`;
+    $("one").innerHTML = paperHTML(a.hujjat) + `${I.lang === "uz" ? `<label class="check"><input type="checkbox" id="old"> Eski yozuvda</label>` : ""}<button class="btn acc block" id="re">Word yuklab oliş</button>`;
     $("re").onclick = () => downloadDoc(a.hujjat, a.turi, a.idora, false);
     $("one").scrollIntoView({ behavior: "smooth" });
   };
@@ -829,6 +917,7 @@ if (standalone()) document.documentElement.classList.add("pwa");
 
 /* ---------------- start ---------------- */
 (async () => {
+  I.start();
   try { S.status = await api("status"); } catch (e) { S.status = {}; }
   route();
 })();

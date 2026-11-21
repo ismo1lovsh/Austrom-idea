@@ -3,6 +3,7 @@ import json
 import anthropic
 from config import ANTHROPIC_API_KEY, CLAUDE_MODEL
 from alifbo import yangi
+import til
 
 client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY) if ANTHROPIC_API_KEY else None
 
@@ -77,8 +78,17 @@ TOOLS = {
 }
 
 
+RU_RULE = ("\nTIL (MUHIM): foydalanuvçi rus tilida işlayapti. Yuqoridagi alifbo qoidasi bekor. Barça matnli maydonlarni RUS TILIDA yoz "
+           "(на русском языке, простым языком). Hujjat va modda nomlarini ham rus tilida ber: MJTK → КоАО (Кодекс об административной "
+           "ответственности), JK → УК, JPK → УПК, FK → ГК, FPK → ГПК, MK → ТК, OK → Семейный кодекс, SK → Налоговый кодекс, "
+           "Vazirlar Mahkamasi qarori → постановление Кабинета Министров, YPX → ДПС. Masalan: «КоАО, статья 126, часть 1».")
+USER_FACING = {"javob", "modda", "tartib", "hujjat", "qa", "video", "yonalt", "fayl"}
+
+
 def _call(key, system, user, max_tokens=1500):
     tool = TOOLS[key]
+    if key in USER_FACING and til.cur() == "ru":
+        system += RU_RULE
     msg = client.messages.create(
         model=CLAUDE_MODEL, max_tokens=max_tokens,
         system=system + f"\nJavobni faqat `{tool['name']}` vositasi orqali qaytar.",
@@ -95,7 +105,7 @@ KEEP = {"manbalar", "kalit", "keyingi", "idlar", "sorovlar", "kodekslar", "bolim
 
 def ny(x, key=""):
     """Natijani yangi alifboga o'tkazish (texnik maydonlardan tashqari)."""
-    if key in KEEP:
+    if til.cur() == "ru" or key in KEEP:
         return x
     if isinstance(x, str):
         return yangi(x)
@@ -112,7 +122,9 @@ def ctx(arts, limit=3500):
 
 # ---------- vazifalar ----------
 def rewrite(question):
-    return _call("qayta_yoz", "Sen O'zbekiston qonunçiligi böyiça qidiruv mutaxassisisan. Kundalik tildagi savolni qonun matnidagi atamalarga aylantir.", question, 300)
+    return _call("qayta_yoz", "Sen O'zbekiston qonunçiligi böyiça qidiruv mutaxassisisan. Kundalik tildagi savolni qonun matnidagi atamalarga aylantir. "
+                 "Savol rus tilida yoki kirill yozuvida bölsa ham, qidiruv sörovlarini baribir ÖZBEK tilida, eski lotin yozuvida yoz "
+                 "(qonunlar bazasi özbekça).", question, 300)
 
 
 def select(question, cands):
@@ -174,8 +186,66 @@ def formal(story):
     """Fuqaro og'zaki aytgan holatni rasmiy uslubga o'tkazadi (faktlarni o'zgartirmaydi)."""
     msg = client.messages.create(
         model=CLAUDE_MODEL, max_tokens=600,
-        system="Fuqaro aytgan holatni sudga yoziladigan arizaning rasmiy uslubiga keltir. Birinchi shaxsda yoz, 2-4 gap. "
+        system=("Fuqaro aytgan holatni sudga yoziladigan arizaning rasmiy uslubiga keltir. Birinchi shaxsda yoz, 2-4 gap. "
                "Faktlarni o'zgartirma, yangi fakt, sana, raqam, modda qo'shma. Faqat matnni qaytar, kirish so'zlarisiz. "
-               "Matnni kichik harf bilan boshla, chunki u 'shuni ma'lum qilmoqchimanki,' so'zidan keyin keladi. Eski lotin yozuvida yoz.",
+               "Matnni kichik harf bilan boshla, chunki u 'shuni ma'lum qilmoqchimanki,' so'zidan keyin keladi. Eski lotin yozuvida yoz."
+               if til.cur() != "ru" else
+               "Перепиши рассказ гражданина в официальном стиле заявления в суд, от первого лица, 2–4 предложения. "
+               "Не меняй факты, не добавляй новые факты, даты, суммы и статьи. Верни только текст, без вступления. "
+               "Начни с маленькой буквы: текст идёт после слов «сообщаю Вам, что»."),
         messages=[{"role": "user", "content": story}])
     return msg.content[0].text.strip()
+
+
+# ---------- tarjima (rus tili) ----------
+TOOLS["tarjima"] = {"name": "tarjima", "description": "Matnlarni rus tiliga tarjima",
+    "input_schema": S({"tarjimalar": {**ARR(STR), "description": "Har bir kiriş matnining rusça tarjimasi, AYNAN şu tartibda va şu sonda"}})}
+
+TR_SYS = ("Ты профессиональный юридический переводчик с узбекского на русский. Переводи точно и естественно, сохраняя числа, "
+          "даты, [квадратные скобки], переносы строк и кавычки «». Ничего не добавляй и не сокращай. Термины: Ma'muriy javobgarlik "
+          "to'g'risidagi kodeks (MJTK) → Кодекс об административной ответственности (КоАО); Jinoyat kodeksi (JK) → Уголовный кодекс (УК); "
+          "Jinoyat-protsessual kodeksi (JPK) → Уголовно-процессуальный кодекс (УПК); Fuqarolik protsessual kodeksi (FPK) → ГПК; "
+          "Mehnat kodeksi (MK) → Трудовой кодекс (ТК); Vazirlar Mahkamasi → Кабинет Министров; YPX → ДПС; IIV → ОВД; hokimlik → хокимият; "
+          "mahalla → махалля; söm → сум; modda → статья; qism → часть; band → пункт; bob → глава; bölim → раздел; "
+          "Donişmand bobo → Донишманд-бобо. Короткие названия кодексов (JK, MJTK и т.п.) переводи как УК, КоАО и т.п.")
+
+
+def translate_ru(items):
+    payload = json.dumps(items, ensure_ascii=False)
+    out = _call_raw("tarjima", TR_SYS, f"Переведи на русский язык каждый элемент JSON-массива ({len(items)} шт.):\n{payload}",
+                    min(8000, 400 + len(payload) * 2))
+    return out.get("tarjimalar", [])
+
+
+def _call_raw(key, system, user, max_tokens):
+    tool = TOOLS[key]
+    msg = client.messages.create(model=CLAUDE_MODEL, max_tokens=max_tokens, system=system,
+                                 tools=[tool], tool_choice={"type": "tool", "name": tool["name"]},
+                                 messages=[{"role": "user", "content": user}])
+    for b in msg.content:
+        if b.type == "tool_use":
+            return b.input
+    raise RuntimeError("Model javob qaytarmadi")
+
+
+# ---------- yuklangan hujjat (rasm / PDF) tahlili ----------
+TOOLS["fayl"] = {"name": "hujjat_tahlili", "description": "Yuklangan hujjatni öqib, asosiy ma'lumotlarni ajratiş",
+    "input_schema": S({
+        "turi": {**STR, "description": "Hujjat turi, masalan: 'Ma'muriy jarima haqidagi qaror', 'Sud ajrimi', 'Mehnat şartnomasi'"},
+        "qisqa": {**STR, "description": "Hujjatda nima yozilgan — 2-3 sodda gap"},
+        "malumotlar": {**ARR(S({"nomi": STR, "qiymat": STR})), "description": "Hujjatdagi muhim ma'lumotlar: raqam, sana, summa, idora, modda, muddat. FAQAT hujjatda yozilgani"},
+        "muammolar": {**ARR(STR), "description": "Hujjatdagi xatolar, yetişmayotgan rekvizitlar, şubhali yoki e'tibor beriş kerak bölgan joylar (faqat hujjatga asoslanib). Bölmasa bo'sh"},
+        "sorovlar": {**ARR(STR), "description": "Qonunlar bazasidan qidiriş uçun 3-5 qisqa sörov, ÖZBEK tilida, eski lotin yozuvida (masalan: 'tonirovka jarima', 'ma'muriy jarima ustidan shikoyat muddati')"},
+        "savol": {**STR, "description": "Foydalanuvçi uçun eng muhim savol, hujjat asosida (masalan: 'Bu jarima qonuniymi va qanday şikoyat qilaman?')"},
+        "oqildi": {**BOOL, "description": "Hujjat matni öqildimi (rasm xira yoki hujjat emas bölsa false)"}})}
+
+
+def fayl_extract(data_b64, media_type, user_q=""):
+    if media_type == "application/pdf":
+        block = {"type": "document", "source": {"type": "base64", "media_type": "application/pdf", "data": data_b64}}
+    else:
+        block = {"type": "image", "source": {"type": "base64", "media_type": media_type, "data": data_b64}}
+    q = f"Foydalanuvçining savoli: {user_q}" if user_q else "Foydalanuvçi bu hujjat böyiça nima qiliş kerakligini bilmoqçi."
+    return ny(_call("fayl", BASE + "\nSen yuklangan hujjatni (rasm yoki PDF) öqiysan. Faqat hujjatda körinib turgan narsani yoz, "
+                    "körinmagan raqam, sana, ismni öylab topma. Şaxsiy ma'lumotlarni (pasport, JŞŞIR) to'liq takrorlama.",
+                    [block, {"type": "text", "text": q + "\nHujjatni tahlil qil."}], 1500))
